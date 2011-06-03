@@ -1,12 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Windows.Forms;
+using System.Drawing;
 
 namespace AHKScriptsMan
 {
-    public delegate void DialogEvent();
+    internal delegate void DialogEvent();
 
-    public partial class MsgBoxCreator : Form
+    internal partial class MsgBoxCreator : Form
     {
         int options;
         string title;
@@ -17,16 +19,16 @@ namespace AHKScriptsMan
         /// a delegate that is called when the user clicks "Insert Code"
         /// </summary>
         /// <returns>(void)</returns>
-        public event DialogEvent OnInsertCode;
+        internal event DialogEvent OnInsertCode;
 
         /// <summary>
         /// a delegate that is called when the user clicks "Save code"
         /// </summary>
         /// <returns>(void)</returns>
-        public event DialogEvent OnSaveCode;
+        internal event DialogEvent OnSaveCode;
 
 
-        public MsgBoxCreator(DialogEvent insert, DialogEvent save)
+        internal MsgBoxCreator(DialogEvent insert, DialogEvent save)
         {
             InitializeComponent();
 
@@ -46,7 +48,7 @@ namespace AHKScriptsMan
 
         }
 
-        void button4_Click(object sender, EventArgs e)
+        internal void button4_Click(object sender, EventArgs e)
         {
             if (this.OnSaveCode != null)
             {
@@ -54,13 +56,13 @@ namespace AHKScriptsMan
             }
         }
 
-        void button3_Click(object sender, EventArgs e)
+        internal void button3_Click(object sender, EventArgs e)
         {
             this.button1_Click(sender, e);
             this.MsgBox(this.options, this.title, this.text, this.timeout);
         }
 
-        void button2_Click(object sender, EventArgs e)
+        internal void button2_Click(object sender, EventArgs e)
         {
             if (this.OnInsertCode != null)
             {
@@ -68,7 +70,7 @@ namespace AHKScriptsMan
             }
         }
 
-        void button1_Click(object sender, EventArgs e)
+        internal void button1_Click(object sender, EventArgs e)
         {
             int flags = 0;
             switch (this.modal_comboBox.SelectedIndex)
