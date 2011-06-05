@@ -15,7 +15,7 @@ namespace AHKScriptsMan.Plugins.AHK
         task
     }
 
-    static class Program
+    static class AutoHotkeyPlugin
     {
         /// <summary>
         /// Der Haupteinstiegspunkt für die Anwendung.
@@ -40,7 +40,6 @@ namespace AHKScriptsMan.Plugins.AHK
 
             languages[3].language = new Guid("{82ff6b49-18fd-42ba-bd1e-e150af60e0a5}");
             languages[3].languageName = "AutoHotkey v2";
-
 
             return languages;
         }

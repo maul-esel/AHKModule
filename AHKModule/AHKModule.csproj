@@ -8,7 +8,7 @@
     <ProjectGuid>{515AC0CF-C1E0-431F-A454-A79FC56CFBBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AHKScriptsMan.Plugins.AHK</RootNamespace>
+    <RootNamespace>ChameleonCoder.Plugins.AHK</RootNamespace>
     <AssemblyName>AHKModule</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
@@ -67,8 +67,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoHotkey.cs" />
-    <Compile Include="CompileAHK.cs" />
+    <Compile Include="CompileAHK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompileAHK.Designer.cs">
+      <DependentUpon>CompileAHK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CompileAHK2.cs" />
     <Compile Include="CompileAHKProject.cs" />
+    <Compile Include="Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
     <Compile Include="MsgBoxCreator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +89,14 @@
     <Compile Include="PluginInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Translator.cs" />
+    <EmbeddedResource Include="CompileAHK.resx">
+      <DependentUpon>CompileAHK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Language.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="MsgBoxCreator.resx">
       <DependentUpon>MsgBoxCreator.cs</DependentUpon>
     </EmbeddedResource>
