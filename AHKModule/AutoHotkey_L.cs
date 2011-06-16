@@ -1,10 +1,8 @@
 ﻿using System;
-using System.ComponentModel.Composition;
 using ChameleonCoder.Plugins;
 
 namespace AHKModule
 {
-    [Export(typeof(ChameleonCoder.Plugins.ILanguageModule))]
     public class AutoHotkey_L : ILanguageModule
     {
         string ILanguageModule.Author { get { return "maul.esel"; } }
