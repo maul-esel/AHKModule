@@ -8,7 +8,7 @@
     <ProjectGuid>{515AC0CF-C1E0-431F-A454-A79FC56CFBBC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ChameleonCoder.Plugins.AHK</RootNamespace>
+    <RootNamespace>AHKModule</RootNamespace>
     <AssemblyName>AHKModule</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
@@ -54,7 +54,14 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ChameleonCoder, Version=0.0.0.1, Culture=neutral, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <ExecutableExtension>.exe</ExecutableExtension>
+      <HintPath>..\..\ChameleonCoder\Deploy\ChameleonCoder.exe</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -66,15 +73,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoHotkey.cs" />
+    <Compile Include="AutoHotkey_2.cs" />
+    <Compile Include="AutoHotkey_L.cs" />
     <Compile Include="CompileAHK.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CompileAHK.Designer.cs">
       <DependentUpon>CompileAHK.cs</DependentUpon>
     </Compile>
-    <Compile Include="CompileAHK2.cs" />
-    <Compile Include="CompileAHKProject.cs" />
+    <Compile Include="IronAHK.cs" />
     <Compile Include="Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -86,8 +93,7 @@
     <Compile Include="MsgBoxCreator.designer.cs">
       <DependentUpon>MsgBoxCreator.cs</DependentUpon>
     </Compile>
-    <Compile Include="PluginInfo.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="AutoHotkeyBasic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Translator.cs" />
     <EmbeddedResource Include="CompileAHK.resx">

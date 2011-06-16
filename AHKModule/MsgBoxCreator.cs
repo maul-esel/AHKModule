@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 
-namespace AHKScriptsMan
+namespace AHKModule
 {
     internal delegate void DialogEvent();
 
@@ -179,8 +179,6 @@ namespace AHKScriptsMan
                 case 3: buttons = MessageBoxButtons.YesNoCancel; break;
                 case 4: buttons = MessageBoxButtons.YesNo; break;
                 case 5: buttons = MessageBoxButtons.RetryCancel; break;
-                //case 6: /* Cancel/Try Again/Continue */ ; break;
-                //case 7: /* Adds a Help button */ ; break; // help done differently
             }
 
             MessageBoxIcon icon = MessageBoxIcon.None;

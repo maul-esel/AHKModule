@@ -1,4 +1,4 @@
-﻿namespace AHKScriptsMan
+﻿namespace AHKModule
 {
     partial class MsgBoxCreator
     {
