@@ -1,7 +1,7 @@
 ﻿using System;
 using ChameleonCoder.Plugins;
 
-namespace AHKModule
+namespace AHKModule.AutoHotkey_2
 {
     public class AutoHotkey_2 : ILanguageModule
     {
@@ -17,11 +17,22 @@ namespace AHKModule
         bool ILanguageModule.SupportsFunctions { get { return true; } }
         bool ILanguageModule.SupportsLabels { get { return true; } }
 
-        void ILanguageModule.Initalize()
+        private ILanguageModuleHost Host;
+
+        void ILanguageModule.Initialize(ILanguageModuleHost host)
         {
+            this.Host = host;
         }
 
         void ILanguageModule.Shutdown()
+        {
+        }
+
+        void ILanguageModule.Load()
+        {
+        }
+
+        void ILanguageModule.Unload()
         {
         }
 
@@ -37,19 +48,22 @@ namespace AHKModule
         {
         }
 
-        string ILanguageModule.NewClass(Guid resource)
+        bool ILanguageModule.NewClass(Guid resource, out string code)
         {
-            return string.Empty;
+            code = string.Empty;
+            return false;
         }
 
-        string ILanguageModule.NewFunction(Guid resource)
+        bool ILanguageModule.NewFunction(Guid resource, out string code)
         {
-            return string.Empty;
+            code = string.Empty;
+            return false;
         }
 
-        string ILanguageModule.NewLabel(Guid resource)
+        bool ILanguageModule.NewLabel(Guid resource, out string code)
         {
-            return string.Empty;
+            code = string.Empty;
+            return false;
         }
     }
 }

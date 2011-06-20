@@ -14,6 +14,8 @@ namespace AHKModule
         string title;
         string text;
         int timeout;
+
+        public string Code;
         
         /// <summary>
         /// a delegate that is called when the user clicks "Insert Code"
@@ -45,7 +47,6 @@ namespace AHKModule
 
             OnInsertCode += insert;
             OnSaveCode += save;
-
         }
 
         internal void button4_Click(object sender, EventArgs e)
@@ -137,6 +138,9 @@ namespace AHKModule
                     break;
             }
 
+            if (this.checkBox1.Checked)
+                flags += 16384;
+
             if (this.right_checkbox.Checked)
             {
                 flags += 524288;
@@ -157,7 +161,7 @@ namespace AHKModule
             builder.Replace(";", "`;");
             string title = builder.ToString();
             
-            this.output_textbox.Text = "MsgBox " + flags + ", " + title + ", " + this.text_textbox.Text + ", " + this.numericUpDown1.Value.ToString();
+            this.Code = this.output_textbox.Text = "MsgBox " + flags + ", " + title + ", " + this.text_textbox.Text + ", " + this.numericUpDown1.Value.ToString();
         }
 
         /// <summary>

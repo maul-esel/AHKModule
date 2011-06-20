@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
@@ -17,16 +12,13 @@ namespace AHKModule
         internal string password { get; set; }
         internal Guid AHKVersion { get; set; }
 
-        internal CompileAHK(string fileIn, string fileOut, string icon, string password, Guid AHKVersion)
+        internal CompileAHK(ChameleonCoder.Resources.CodeResource resource, Guid AHKVersion)
         {
-            this.fileIn = fileIn;
-            this.fileOut = fileOut;
-            this.icon = icon;
-            this.password = password;
-            this.AHKVersion = AHKVersion;
             InitializeComponent();
-            
-            // todo: one parameter (the resource to compile), convert to IResource or cFile or ...
+
+            this.fileIn = resource.Path;
+            this.fileOut = resource.CompilationPath;
+            this.AHKVersion = AHKVersion;
 
             this.listView1.Columns.Add(string.Empty);
             this.listView1.Columns.Add(string.Empty);
@@ -75,10 +67,8 @@ namespace AHKModule
             cmd.Replace("{1}", "\"" + this.fileOut + "\"");
             cmd.Replace("{2}", "\"" + this.icon + "\"");
             cmd.Replace("{3}", "\"" + this.password + "\"");
-            string cmd_ = cmd.ToString();
-            System.Diagnostics.Process.Start(Application.StartupPath + "\\Plugins\\" + AHKVersion.ToString() + "\\Compiler.exe",
-                cmd_);
-
+            System.Diagnostics.Process.Start(Environment.CurrentDirectory + "\\Plugins\\" + AHKVersion.ToString("B") + "\\Compiler.exe",
+                cmd.ToString());
         }
     }
 }

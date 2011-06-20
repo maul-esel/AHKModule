@@ -1,27 +1,38 @@
 ﻿using System;
 using ChameleonCoder.Plugins;
 
-namespace AHKModule
+namespace AHKModule.IronAHK
 {
-    public class AutoHotkeyBasic : ILanguageModule
+    public class IronAHK : ILanguageModule
     {
         string ILanguageModule.Author { get { return "maul.esel"; } }
         string ILanguageModule.Version { get { return "1.0"; } }
         string ILanguageModule.About { get { return "Copyright (c) 2011 maul.esel"; } }
 
         int ILanguageModule.APIVersion { get { return 1; } }
-        Guid ILanguageModule.Language { get { return new Guid("{f67fb9f3-ea9c-4140-b960-f47a44b5de56}"); } }
-        string ILanguageModule.LanguageName { get { return "AutoHotkey"; } }
+        Guid ILanguageModule.Language { get { return new Guid("{2db75a0a-eafa-46ad-90b6-1143094e3ed1}"); } }
+        string ILanguageModule.LanguageName { get { return "IronAHK"; } }
 
         bool ILanguageModule.SupportsClasses { get { return false; } }
         bool ILanguageModule.SupportsFunctions { get { return true; } }
         bool ILanguageModule.SupportsLabels { get { return true; } }
 
-        void ILanguageModule.Initalize()
+        private ILanguageModuleHost Host;
+
+        void ILanguageModule.Initialize(ILanguageModuleHost host)
         {
+            this.Host = host;
         }
 
         void ILanguageModule.Shutdown()
+        {
+        }
+
+        void ILanguageModule.Load()
+        {
+        }
+
+        void ILanguageModule.Unload()
         {
         }
 
@@ -37,21 +48,22 @@ namespace AHKModule
         {
         }
 
-        string ILanguageModule.NewClass(Guid resource)
+        bool ILanguageModule.NewClass(Guid resource, out string code)
         {
-            return string.Empty;
+            code = string.Empty;
+            return false;
         }
 
-        string ILanguageModule.NewFunction(Guid resource)
+        bool ILanguageModule.NewFunction(Guid resource, out string code)
         {
-            return string.Empty;
+            code = string.Empty;
+            return false;
         }
 
-        string ILanguageModule.NewLabel(Guid resource)
+        bool ILanguageModule.NewLabel(Guid resource, out string code)
         {
-            return string.Empty;
+            code = string.Empty;
+            return false;
         }
-
-
     }
 }

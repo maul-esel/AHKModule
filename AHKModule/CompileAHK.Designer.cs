@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CompileAHK));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.checkBox_savesettings = new System.Windows.Forms.CheckBox();
@@ -924,6 +925,7 @@
             this.Controls.Add(this.button_cancel);
             this.Controls.Add(this.button_compile);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "CompileAHK";
             this.Text = "CompileAHK.NET";
             this.tabControl1.ResumeLayout(false);

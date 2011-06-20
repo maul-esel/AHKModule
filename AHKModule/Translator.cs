@@ -14,6 +14,7 @@ namespace AHKModule
     {
         private static ResourceManager resMgr;
 
+        [Obsolete("wrong namespace", true)]
         internal static void UpdateLanguage(string langID)
         {
             try
@@ -21,7 +22,7 @@ namespace AHKModule
                 //Set Language  
                 Thread.CurrentThread.CurrentUICulture = new CultureInfo(langID);
 
-                // Init ResourceManager  
+                // Init ResourceManager
                 resMgr = new ResourceManager("ChameleonCoder.Localizer", Assembly.GetExecutingAssembly());
             }
             catch (Exception e)
