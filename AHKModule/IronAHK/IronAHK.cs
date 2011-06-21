@@ -34,7 +34,7 @@ namespace AHKModule.IronAHK
         void ILanguageModule.Initialize(ILanguageModuleHost host)
         {
             this.Host = host;
-            this._icon = Imaging.CreateBitmapSourceFromHBitmap(Images.AHKB.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            this._icon = Imaging.CreateBitmapSourceFromHBitmap(Images.AHKI.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
         }
 
         void ILanguageModule.Shutdown()

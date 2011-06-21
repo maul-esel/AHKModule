@@ -166,11 +166,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\AHK_2.png" />
-    <Content Include="Images\AHKB.png" />
-    <Content Include="Images\AHK_I.png" />
-    <Content Include="Images\AHK_L.png" />
-    <None Include="Resources\AHK2.png" />
+    <None Include="Images\AHK_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\AHK_I.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\AHK_L.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Images\AHKB.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

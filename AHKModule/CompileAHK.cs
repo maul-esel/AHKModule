@@ -62,6 +62,8 @@ namespace AHKModule
 
         private void Compile()
         {
+            // TODO: add resource manipulation etc.
+
             StringBuilder cmd = new StringBuilder("/in {0} /out {1} /icon {2} /password {3}");
             cmd.Replace("{0}", "\"" + this.fileIn + "\"");
             cmd.Replace("{1}", "\"" + this.fileOut + "\"");
