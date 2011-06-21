@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Windows;
+using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using ChameleonCoder.Plugins;
 
 namespace AHKModule.IronAHK
@@ -17,11 +21,20 @@ namespace AHKModule.IronAHK
         bool ILanguageModule.SupportsFunctions { get { return true; } }
         bool ILanguageModule.SupportsLabels { get { return true; } }
 
+        bool ILanguageModule.IsBusy { get { return _busy; } }
+
+        ImageSource ILanguageModule.Icon { get { return _icon; } }
+
+        private bool _busy;
+
+        private ImageSource _icon;
+
         private ILanguageModuleHost Host;
 
         void ILanguageModule.Initialize(ILanguageModuleHost host)
         {
             this.Host = host;
+            this._icon = Imaging.CreateBitmapSourceFromHBitmap(AHKModule.AutoHotkey.Images.AHKB.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
         }
 
         void ILanguageModule.Shutdown()

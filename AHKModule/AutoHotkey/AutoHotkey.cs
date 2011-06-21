@@ -1,6 +1,9 @@
 ﻿using System;
-using ChameleonCoder.Plugins;
+using System.Windows;
 using System.Windows.Interop;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using ChameleonCoder.Plugins;
 using ChameleonCoder.Resources;
 using ChameleonCoder.Resources.Base;
 
@@ -20,11 +23,20 @@ namespace AHKModule.AutoHotkey
         bool ILanguageModule.SupportsFunctions { get { return true; } }
         bool ILanguageModule.SupportsLabels { get { return true; } }
 
+        bool ILanguageModule.IsBusy { get { return _busy; } }
+
+        ImageSource ILanguageModule.Icon { get { return _icon; } }
+
+        private bool _busy;
+
+        private ImageSource _icon;
+
         private ILanguageModuleHost Host;
 
         void ILanguageModule.Initialize(ILanguageModuleHost host)
         {
             this.Host = host;
+            this._icon = Imaging.CreateBitmapSourceFromHBitmap(AHKModule.AutoHotkey.Images.AHKB.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
         }
 
         void ILanguageModule.Shutdown()
@@ -44,8 +56,27 @@ namespace AHKModule.AutoHotkey
         {
         }
 
-        void ILanguageModule.Compile(Guid resource)
+        void ILanguageModule.Compile(Guid resourceID)
         {
+            ResourceBase resource = Host.GetResource(resourceID);
+
+            while (resource is LinkResource)
+                resource = (resource as LinkResource).Resolve();
+
+            switch (resource.Type)
+            {
+                case ResourceType.file: resource = resource as FileResource; break;
+                case ResourceType.code: resource = resource as CodeResource; break;
+                case ResourceType.library: resource = resource as LibraryResource; break;
+                case ResourceType.project: resource = resource as ProjectResource; break;
+                case ResourceType.task: resource = resource as TaskResource; break;
+            }
+
+            if (resource != null)
+            {
+                //Compiler = new CompileAHK<T>();
+                // todo: make CompileAHK generic???
+            }
         }
 
         void ILanguageModule.Execute(Guid resource)
@@ -84,40 +115,6 @@ namespace AHKModule.AutoHotkey
         {
             this.Host.InsertCode(MsgBoxCreator.Code);
         }
-        #endregion
-
-        #region Compiler
-
-        static CompileAHK Compiler;
-
-        public void LoadCompileAHK(object sender, EventArgs e)
-        {
-            ResourceBase resource = Host.GetResource(Host.GetCurrentResource());
-
-            while (true)
-            {
-                if (resource is LinkResource)
-                    resource = ((LinkResource)resource).Resolve();
-                else
-                    break;
-            }
-
-            switch (resource.Type)
-            {
-                case ResourceType.file: resource = resource as FileResource; break;
-                case ResourceType.code: resource = resource as CodeResource; break;
-                case ResourceType.library: resource = resource as LibraryResource; break;
-                case ResourceType.project: resource = resource as ProjectResource; break;
-                case ResourceType.task: resource = resource as TaskResource; break;
-            }
-
-            if (resource != null)
-            {
-                //Compiler = new CompileAHK<T>();
-                // todo: make CompileAHK generic???
-            }
-        }
-
         #endregion
     }
 }
