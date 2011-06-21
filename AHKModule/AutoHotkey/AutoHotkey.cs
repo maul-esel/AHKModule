@@ -36,7 +36,7 @@ namespace AHKModule.AutoHotkey
         void ILanguageModule.Initialize(ILanguageModuleHost host)
         {
             this.Host = host;
-            this._icon = Imaging.CreateBitmapSourceFromHBitmap(AHKModule.AutoHotkey.Images.AHKB.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
+            this._icon = Imaging.CreateBitmapSourceFromHBitmap(Images.AHKB.GetHbitmap(), IntPtr.Zero, Int32Rect.Empty, BitmapSizeOptions.FromEmptyOptions());
         }
 
         void ILanguageModule.Shutdown()

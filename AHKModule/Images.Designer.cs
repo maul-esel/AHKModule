@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AHKModule.AutoHotkey {
+namespace AHKModule {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace AHKModule.AutoHotkey {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AHKModule.AutoHotkey.Images", typeof(Images).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AHKModule.Images", typeof(Images).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
