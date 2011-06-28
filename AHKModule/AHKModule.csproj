@@ -179,7 +179,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "C:\Programming\C#\AHKModule\Deploy\AHKModule.dll" "C:\Programming\C#\ChameleonCoder\Deploy\Plugins\AHKModule.dll"</PostBuildEvent>
+    <PostBuildEvent>copy "C:\Programming\C#\AHKModule\Deploy\AHKModule.dll" "C:\Programming\C#\ChameleonCoder\Deploy\Components\AHKModule.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
