@@ -58,9 +58,11 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
+    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AutoHotkey.cs" />
@@ -68,6 +70,9 @@
     <Compile Include="AutoHotkey_L.cs" />
     <Compile Include="CompileAHK_NET.xaml.cs">
       <DependentUpon>CompileAHK_NET.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GuiCreator.xaml.cs">
+      <DependentUpon>GuiCreator.xaml</DependentUpon>
     </Compile>
     <Compile Include="ImageCheckbox.xaml.cs">
       <DependentUpon>ImageCheckbox.xaml</DependentUpon>
@@ -107,6 +112,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="CompileAHK_NET.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GuiCreator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
