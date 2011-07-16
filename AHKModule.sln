@@ -1,7 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AHKModule", "AHKModule\AHKModule.csproj", "{515AC0CF-C1E0-431F-A454-A79FC56CFBBC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "_AHKModule", "_AHKModule\_AHKModule.csproj", "{515AC0CF-C1E0-431F-A454-A79FC56CFBBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AHKModule", "AHKModule\AHKModule.csproj", "{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,6 +25,16 @@ Global
 		{515AC0CF-C1E0-431F-A454-A79FC56CFBBC}.Release|Mixed Platforms.Build.0 = Release|x86
 		{515AC0CF-C1E0-431F-A454-A79FC56CFBBC}.Release|x86.ActiveCfg = Release|x86
 		{515AC0CF-C1E0-431F-A454-A79FC56CFBBC}.Release|x86.Build.0 = Release|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Debug|x86.ActiveCfg = Debug|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Debug|x86.Build.0 = Debug|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Release|Any CPU.ActiveCfg = Release|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Release|Mixed Platforms.Build.0 = Release|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Release|x86.ActiveCfg = Release|x86
+		{E1BE1298-13E7-4DE6-B3B3-DC600BF19ED6}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

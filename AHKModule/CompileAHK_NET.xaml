@@ -1,0 +1,49 @@
+﻿<Window x:Class="AHKModule.CompileAHK_NET"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:res="clr-namespace:ChameleonCoder.Resources;assembly=ChameleonCoder"
+        Title="CompileAHK_NET" Height="300" Width="700">
+    <Window.Resources>
+        <res:ResourceCollection x:Key="resources"/>        
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <TreeView Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="5,5,5,5" ItemsSource="{StaticResource resources}">
+            <TreeView.ItemTemplate>
+                <HierarchicalDataTemplate ItemsSource="{Binding Path=children}">
+                    <TextBlock Text="{Binding Path=Name}"/>
+                </HierarchicalDataTemplate>
+            </TreeView.ItemTemplate>
+        </TreeView>
+
+        <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
+            <TextBlock  Margin="5,5,5,5" Text="action:"/>
+            <ComboBox Margin="5,5,5,5" x:Name="CompileAction">
+                <ComboBoxItem Content="ignore"/>
+                <ComboBoxItem Content="copy"/>
+                <ComboBoxItem Content="include in compiled exe"/>
+                <ComboBoxItem Content="compile a separate exe"/>
+                <ComboBoxItem Content="include as resource"/>
+            </ComboBox>
+        </StackPanel>
+
+        <Grid x:Name="Opt_Copy" Grid.Column="1" Grid.Row="1" Visibility="Collapsed">
+        </Grid>
+        
+        <Grid x:Name="Opt_CompResource" Grid.Column="1" Grid.Row="1" Visibility="Collapsed"></Grid>
+        
+        <Grid x:Name="Opt_CompAside" Grid.Column="1" Grid.Row="1" Visibility="Collapsed"></Grid>
+        
+        <Grid x:Name="Opt_CompInclude" Grid.Column="1" Grid.Row="1" Visibility="Collapsed"></Grid>
+        
+    </Grid>
+</Window>
