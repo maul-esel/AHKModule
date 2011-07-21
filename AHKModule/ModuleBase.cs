@@ -29,9 +29,9 @@ namespace AHKModule
         public virtual void Load()
         {
             this.host.RegisterCodeGenerator(this.LoadMsgBoxCreator, null, "MsgBoxCreator"); // add delegate and icon
-            this.host.RegisterCodeGenerator(delegate (Guid g, CodeGeneratorEventArgs e)
+            this.host.RegisterCodeGenerator(delegate (IResource sender, CodeGeneratorEventArgs e)
             {
-                (new CompileAHK_NET(host.GetResource(g) as ICompilable)).ShowDialog();
+                (new CompileAHK_NET(host.GetResource(sender.GUID) as ICompilable)).ShowDialog();
             }, null, "compile");
         }
 
@@ -61,7 +61,7 @@ namespace AHKModule
         static MsgBoxCreator MsgBoxCreator;
 
 
-        public void LoadMsgBoxCreator(Guid resource, CodeGeneratorEventArgs e)
+        public void LoadMsgBoxCreator(IResource sender, CodeGeneratorEventArgs e)
         {
             MsgBoxCreator = new MsgBoxCreator(delegate
                 {
@@ -71,7 +71,7 @@ namespace AHKModule
                 delegate
                 {
                     e.Handled = true;
-                    host.AddResource(null, resource);
+                    host.AddResource(null, sender.GUID);
                     // add new file to resource
                 });
 
