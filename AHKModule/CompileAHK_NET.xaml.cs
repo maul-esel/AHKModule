@@ -25,7 +25,7 @@ namespace AHKModule
             InitializeComponent();
             this.resources = (ResourceCollection)this.Resources["resources"];
 
-            if (resource != null && resource as IAllowChildren != null)
+            if (resource != null)
             {
                 resources.Add(resource);
             }
