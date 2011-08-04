@@ -2,6 +2,7 @@
 using System.Windows.Media;
 using ChameleonCoder.Resources.Interfaces;
 using ChameleonCoder.LanguageModules;
+using IF = ChameleonCoder.Interaction.InformationProvider;
 
 namespace AHKModule
 {
@@ -16,22 +17,20 @@ namespace AHKModule
         public bool IsBusy { get { return busy; } }
         public abstract ImageSource Icon { get; }
         
-        protected ILanguageModuleHost host;
         protected bool busy;
 
-        public virtual void Initialize(ILanguageModuleHost host)
+        public virtual void Initialize()
         {
-            this.host = host;
         }
 
         public virtual void Shutdown() { }
 
         public virtual void Load()
         {
-            this.host.RegisterCodeGenerator(this.LoadMsgBoxCreator, null, "MsgBoxCreator"); // add delegate and icon
-            this.host.RegisterCodeGenerator(delegate (IResource sender, CodeGeneratorEventArgs e)
+            IF.RegisterCodeGenerator(this.LoadMsgBoxCreator, null, "MsgBoxCreator"); // add delegate and icon
+            IF.RegisterCodeGenerator(delegate(IResource sender, CodeGeneratorEventArgs e)
             {
-                (new CompileAHK_NET(host.GetResource(sender.GUID) as ICompilable)).ShowDialog();
+                (new CompileAHK_NET(sender as ICompilable)).ShowDialog();
             }, null, "compile");
         }
 
@@ -63,15 +62,15 @@ namespace AHKModule
 
         public void LoadMsgBoxCreator(IResource sender, CodeGeneratorEventArgs e)
         {
-            MsgBoxCreator = new MsgBoxCreator(delegate
+            MsgBoxCreator = new MsgBoxCreator(() =>
                 {
                     e.Handled = false;
                     e.Code = MsgBoxCreator.Code;
                 },
-                delegate
+                () =>
                 {
                     e.Handled = true;
-                    host.AddResource(null, sender.GUID);
+                    IF.AddResource(null, sender);
                     // add new file to resource
                 });
 
@@ -80,7 +79,7 @@ namespace AHKModule
 
         internal void MsgBoxCreator_InsertCode()
         {
-            this.host.InsertCode(MsgBoxCreator.Code);
+            IF.InsertCode(MsgBoxCreator.Code);
         }
         #endregion
     }
