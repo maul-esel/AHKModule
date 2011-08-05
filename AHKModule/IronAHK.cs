@@ -9,8 +9,9 @@ namespace AHKModule
 {
     public class IronAHK : ModuleBase
     {
-        public override Guid Language { get { return new Guid("{2db75a0a-eafa-46ad-90b6-1143094e3ed1}"); } }
-        public override string LanguageName { get { return "AutoHotkey_L"; } }
+        public override Guid Identifier { get { return new Guid("{2db75a0a-eafa-46ad-90b6-1143094e3ed1}"); } }
+        public override string Name { get { return "AutoHotkey_L"; } }
         public override ImageSource Icon { get { return new BitmapImage(new Uri("pack://application:,,,/AHKModule;component/Icons/iron.png")).GetAsFrozen() as ImageSource; } }
+        public override string Description { get { return "the language module for the IronAHK scripting language"; } }
     }
 }

@@ -12,10 +12,11 @@ namespace AHKModule
         public virtual string Version { get { return "0.01"; } }
         public virtual string About { get { return "Copyright (c) 2011 maul.esel"; } }
         public virtual int APIVersion { get { return 1; } }
-        public abstract Guid Language { get; }
-        public abstract string LanguageName { get; }
+        public abstract Guid Identifier { get; }
+        public abstract string Name { get; }
         public bool IsBusy { get { return busy; } }
         public abstract ImageSource Icon { get; }
+        public abstract string Description { get; }
         
         protected bool busy;
 
