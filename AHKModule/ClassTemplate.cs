@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Media;
-using ChameleonCoder.Templates;
+using ChameleonCoder.Plugins;
 using ChameleonCoder.Resources.Interfaces;
 
 namespace AHKModule

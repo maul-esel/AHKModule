@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Windows.Media;
-using ChameleonCoder.LanguageModules;
+using ChameleonCoder.Plugins;
 using ChameleonCoder.Resources.Interfaces;
 using IF = ChameleonCoder.Interaction.InformationProvider;
 
