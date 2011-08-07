@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
-using ChameleonCoder.Resources.Interfaces;
 using ChameleonCoder.LanguageModules;
+using ChameleonCoder.Resources.Interfaces;
 using IF = ChameleonCoder.Interaction.InformationProvider;
 
 namespace AHKModule

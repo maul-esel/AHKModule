@@ -43,8 +43,13 @@
       <HintPath>..\..\ChameleonCoder\Deploy\ChameleonCoder.exe</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ChameleonCoder.ResourceCore">
+      <HintPath>..\..\ChameleonCoder\Deploy\Components\ChameleonCoder.ResourceCore.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ICSharpCode.AvalonEdit">
       <HintPath>..\..\Avalon\ICSharpCode.AvalonEdit.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -68,6 +73,7 @@
     <Compile Include="AutoHotkey.cs" />
     <Compile Include="AutoHotkey2.cs" />
     <Compile Include="AutoHotkey_L.cs" />
+    <Compile Include="ClassTemplate.cs" />
     <Compile Include="CompileAHK_NET.xaml.cs">
       <DependentUpon>CompileAHK_NET.xaml</DependentUpon>
     </Compile>
