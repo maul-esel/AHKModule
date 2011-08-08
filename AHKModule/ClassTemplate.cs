@@ -55,6 +55,6 @@ namespace AHKModule
 
         public static readonly Guid GUID = Guid.NewGuid();
 
-        int i;
+        int i = 1;
     }
 }
