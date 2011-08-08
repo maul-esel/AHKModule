@@ -15,6 +15,8 @@ namespace AHKModule
 
         public string Description { get { return "creates a new class"; } }
 
+        public string DefaultName { get { return "class" + i + ".ahk"; } }
+
         public ImageSource Icon { get { return new System.Windows.Media.Imaging.BitmapImage(new Uri("pack://application:,,,/AHKModule;component/Icons/version2.png")); } }
 
         public Guid Identifier { get { return GUID; } }
@@ -47,10 +49,12 @@ namespace AHKModule
 
         public IResource Create(IResource parent)
         {
-
+            i++;
             return null;
         }
 
         public static readonly Guid GUID = Guid.NewGuid();
+
+        int i;
     }
 }
