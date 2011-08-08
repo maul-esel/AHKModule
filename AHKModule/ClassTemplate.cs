@@ -47,7 +47,7 @@ namespace AHKModule
             }
         }
 
-        public IResource Create(IResource parent)
+        public IResource Create(IResource parent, string name)
         {
             i++;
             return null;
