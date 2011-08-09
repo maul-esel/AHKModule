@@ -8,7 +8,7 @@ namespace AHKModule
     public class AutoHotkey2 : ModuleBase
     {
         public override Guid Identifier { get { return GUID; } }
-        public override string Name { get { return "AutoHotkey_L"; } }
+        public override string Name { get { return "AutoHotkey v2"; } }
         public override ImageSource Icon { get { return new BitmapImage(new Uri("pack://application:,,,/AHKModule;component/Icons/version2.png")).GetAsFrozen() as ImageSource; } }
         public override string Description { get { return "the language module for the AutoHotkey v2 scripting language"; } }
 
