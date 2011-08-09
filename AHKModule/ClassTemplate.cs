@@ -19,7 +19,7 @@ namespace AHKModule
 
         public ImageSource Icon { get { return new System.Windows.Media.Imaging.BitmapImage(new Uri("pack://application:,,,/AHKModule;component/Icons/version2.png")); } }
 
-        public Guid Identifier { get { return GUID; } }
+        public Guid Identifier { get { return new Guid("{6e593e30-6d9d-4639-909e-897c898425da}"); } }
 
         public string Name { get { return "AHK class template"; } }
 
@@ -52,8 +52,6 @@ namespace AHKModule
             i++;
             return null;
         }
-
-        public static readonly Guid GUID = Guid.NewGuid();
 
         int i = 1;
     }
