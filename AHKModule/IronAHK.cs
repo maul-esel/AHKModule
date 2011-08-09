@@ -8,7 +8,7 @@ namespace AHKModule
     public class IronAHK : ModuleBase
     {
         public override Guid Identifier { get { return GUID; } }
-        public override string Name { get { return "AutoHotkey_L"; } }
+        public override string Name { get { return "IronAHK"; } }
         public override ImageSource Icon { get { return new BitmapImage(new Uri("pack://application:,,,/AHKModule;component/Icons/iron.png")).GetAsFrozen() as ImageSource; } }
         public override string Description { get { return "the language module for the IronAHK scripting language"; } }
 

@@ -9,7 +9,7 @@ namespace AHKModule
     [ChameleonCoder.CCPlugin]
     public class ClassTemplate : ITemplate
     {
-        public string About { get { return "(C) 2011, maul.esel"; } }
+        public string About { get { return "© 2011, maul.esel"; } }
 
         public string Author { get { return "maul.esel"; } }
 

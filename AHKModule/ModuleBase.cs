@@ -10,7 +10,7 @@ namespace AHKModule
     {
         public virtual string Author { get { return "maul.esel"; } }
         public virtual string Version { get { return "0.01"; } }
-        public virtual string About { get { return "Copyright (c) 2011 maul.esel"; } }
+        public virtual string About { get { return "© 2011 maul.esel"; } }
         public virtual int APIVersion { get { return 1; } }
         public abstract Guid Identifier { get; }
         public abstract string Name { get; }
