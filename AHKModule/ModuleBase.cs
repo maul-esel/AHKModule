@@ -18,7 +18,11 @@ namespace AHKModule
 
         public abstract Guid Identifier { get; }
 
-        public bool IsBusy { get { return busy; } }
+        public bool IsBusy
+        {
+            get { return busy; }
+            protected set { busy = value; }
+        }
 
         public abstract string Name { get; }
 
@@ -52,7 +56,7 @@ namespace AHKModule
 
         }
 
-        protected bool busy;
+        private bool busy;
 
         #region MsgBoxCreator
         static MsgBoxCreator MsgBoxCreator;
