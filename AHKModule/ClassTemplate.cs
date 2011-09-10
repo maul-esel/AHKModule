@@ -31,7 +31,7 @@ namespace AHKModule
 
         public Type ResourceType
         {
-            get { return typeof(ChameleonCoder.ResourceCore.CodeResource); }
+            get { return typeof(ChameleonCoder.ComponentCore.Resources.CodeResource); }
         }
 
         public string Group
@@ -43,7 +43,7 @@ namespace AHKModule
         {
             get
             {
-                return new List<Guid>(new Guid[2] { AutoHotkey_L.GUID, AutoHotkey2.GUID });
+                return new List<Guid>(new Guid[2] { AutoHotkey_L.Guid, AutoHotkey2.Guid });
             }
         }
 

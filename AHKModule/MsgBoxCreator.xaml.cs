@@ -139,7 +139,7 @@ namespace AHKModule
         private void TestCode(object sender, EventArgs e)
         {
             this.CreateCode(null, null);
-            this.MsgBox(this.options, this.title, this.text, this.timeout);
+            MsgBox(this.options, this.title, this.text, this.timeout);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace AHKModule
         /// <param name="Title"></param>
         /// <param name="Text"></param>
         /// <param name="Timeout"></param>
-        private void MsgBox(int Options, string Title, string Text, int Timeout)
+        private static void MsgBox(int Options, string Title, string Text, int Timeout)
         {
             Forms.MessageBoxButtons buttons = Forms.MessageBoxButtons.OK;
 

@@ -26,8 +26,8 @@
         </TreeView>
 
         <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0">
-            <TextBlock  Margin="5,5,5,5" Text="action:"/>
-            <ComboBox Margin="5,5,5,5" x:Name="CompileAction">
+            <TextBlock  Margin="5" Text="action:"/>
+            <ComboBox Margin="5" x:Name="CompileAction">
                 <ComboBoxItem Content="ignore"/>
                 <ComboBoxItem Content="copy"/>
                 <ComboBoxItem Content="include in compiled exe"/>

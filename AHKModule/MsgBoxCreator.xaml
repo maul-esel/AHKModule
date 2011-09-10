@@ -54,15 +54,15 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
-                <am:ImageCheckbox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Width="50" Height="80"
+                <am:ImageCheckBox Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="1" Width="50" Height="80"
                                   Content="(no icon)" x:Name="icon_none" Margin="5,5,5,5"/>
-                <am:ImageCheckbox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Width="50" Height="80"
+                <am:ImageCheckBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="1" Width="50" Height="80"
                                   x:Name="icon_hand" Margin="5,5,5,5"/>
-                <am:ImageCheckbox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Width="50" Height="80"
+                <am:ImageCheckBox Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" Width="50" Height="80"
                                   x:Name="icon_question" Margin="5,5,5,5"/>
-                <am:ImageCheckbox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Width="50" Height="80"
+                <am:ImageCheckBox Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Width="50" Height="80"
                                   x:Name="icon_exclamation" Margin="5,5,5,5"/>
-                <am:ImageCheckbox Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1" Width="50" Height="80"
+                <am:ImageCheckBox Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1" Width="50" Height="80"
                                   x:Name="icon_info" Margin="5,5,5,5"/>
             </Grid>
         </GroupBox>

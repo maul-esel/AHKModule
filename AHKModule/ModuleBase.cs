@@ -9,17 +9,22 @@ namespace AHKModule
     public abstract class ModuleBase : ILanguageModule
     {
         public virtual string Author { get { return "maul.esel"; } }
-        public virtual string Version { get { return "0.01"; } }
-        public virtual string About { get { return "© 2011 maul.esel"; } }
-        public virtual int APIVersion { get { return 1; } }
-        public abstract Guid Identifier { get; }
-        public abstract string Name { get; }
-        public bool IsBusy { get { return busy; } }
-        public abstract ImageSource Icon { get; }
-        public abstract string Description { get; }
-        
-        protected bool busy;
 
+        public virtual string About { get { return "© 2011 maul.esel"; } }
+
+        public abstract string Description { get; }
+
+        public abstract ImageSource Icon { get; }
+
+        public abstract Guid Identifier { get; }
+
+        public bool IsBusy { get { return busy; } }
+
+        public abstract string Name { get; }
+
+        public virtual string Version { get { return "0.01"; } }
+        
+        
         public virtual void Initialize()
         {
         }
@@ -47,15 +52,7 @@ namespace AHKModule
 
         }
 
-        protected IResource AbsoluteResolve(IResource resource)
-        {
-            IResolvable link;
-
-            while ((link = resource as IResolvable) != null && link.shouldResolve)
-                resource = link.Resolve();
-
-            return resource;
-        }
+        protected bool busy;
 
         #region MsgBoxCreator
         static MsgBoxCreator MsgBoxCreator;
@@ -77,11 +74,6 @@ namespace AHKModule
 
             MsgBoxCreator.ShowDialog();
         }
-
-        internal void MsgBoxCreator_InsertCode()
-        {
-            IF.InsertCode(MsgBoxCreator.Code);
-        }
-        #endregion
+        #endregion        
     }
 }

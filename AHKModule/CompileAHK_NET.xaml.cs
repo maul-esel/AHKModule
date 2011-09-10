@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using ChameleonCoder.Resources.Interfaces;
+﻿using System.Windows;
 using ChameleonCoder.Resources;
+using ChameleonCoder.Resources.Interfaces;
 
 namespace AHKModule
 {
     /// <summary>
     /// Interaktionslogik für CompileAHK_NET.xaml
     /// </summary>
-    public partial class CompileAHK_NET : Window
+    public sealed partial class CompileAHK_NET : Window
     {
         public CompileAHK_NET(ICompilable resource)
         {
