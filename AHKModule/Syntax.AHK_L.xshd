@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<SyntaxDefinition name="AutoHotkey_L" xmlns="http://icsharpcode.net/sharpdevelop/syntaxdefinition/2008">
+  <Color name="Comment" foreground="Green" />
+  <Color name="String" foreground="crimson" />
+
+  <!-- This is the main ruleset. -->
+  <RuleSet ignoreCase="true">
+
+    <Span color="Comment" begin=";" />
+
+    <Span color="Comment" multiline="true" begin="/\*" end="\*/" />
+
+    <Span color="String">
+      <Begin>"</Begin>
+      <End>"</End>
+      <RuleSet>
+        <!-- nested span for escape sequences -->
+        <Span begin="\\" end="." />
+      </RuleSet>
+    </Span>
+
+    <Span fontWeight="bold" multiline="false" begin="%[\w]" end="%" />
+
+
+    <Rule foreground="CadetBlue" fontWeight="bold">
+      (?&lt;=class)[\s]+[\w]+
+    </Rule>
+
+    <Span color="String" multiline="true" begin="^[\s]*\(" end="^[\s]*\)" />
+
+
+
+    <Keywords fontWeight="bold" foreground="deepskyblue">
+      <Word>if</Word>
+      <Word>else</Word>
+      <Word>return</Word>
+
+      <Word>local</Word>
+      <Word>global</Word>
+      <Word>static</Word>
+      <Word>byref</Word>
+
+      <Word>true</Word>
+      <Word>false</Word>
+
+      <Word>for</Word>
+      <Word>loop</Word>
+      <Word>while</Word>
+      <Word>break</Word>
+      <Word>continue</Word>
+      <Word>in</Word>
+      <Word>do</Word>
+      <Word>until</Word>
+
+      <Word>this</Word>
+      <Word>new</Word>
+      <Word>extends</Word>
+      <Word>class</Word>
+      <Word>base</Word>
+
+      <Word>exitapp</Word>
+      <Word>exit</Word>
+      <Word>gosub</Word>
+      <Word>goto</Word>
+      <Word>reload</Word>
+      <!-- ... -->
+    </Keywords>
+
+    <!-- Build IN Variables -->
+    <Keywords fontWeight="bold" foreground="Violet">
+      <Word>A_Space</Word>
+      <Word>A_Tab</Word>
+
+      <Word>A_WorkingDir</Word>
+      <Word>A_ScriptDir</Word>
+      <Word>A_ScriptName</Word>
+      <Word>A_ScriptFullPath</Word>
+      <Word>A_LineNumber</Word>
+      <Word>A_LineFile</Word>
+      <Word>A_ThisFunc</Word>
+
+      <Word>A_ThisLabel</Word>
+
+      <Word>A_AhkVersion</Word>
+      <Word>A_AhkPath</Word>
+      <Word>A_IsUnicode</Word>
+      <Word>A_IsCompiled</Word>
+      <Word>A_ExitReason</Word>
+
+      <!-- Date and Time -->
+      <Word>A_YYYY</Word>
+      <Word>A_MM</Word>
+      <Word>A_DD</Word>
+      <Word>A_MMMM</Word>
+      <Word>A_MMM</Word>
+      <Word>A_DDDD</Word>
+      <Word>A_DDD</Word>
+      <Word>A_WDay</Word>
+      <Word>A_YDay</Word>
+      <Word>A_YWeek</Word>
+      <Word>A_Hour</Word>
+      <Word>A_Min</Word>
+      <Word>A_Sec</Word>
+      <Word>A_MSec</Word>
+      <Word>A_Now</Word>
+      <Word>A_NowUTC</Word>
+      <Word>A_TickCount</Word>
+      <!-- Script Settings -->
+      <Word>A_IsSuspended</Word>
+      <Word>A_IsPaused</Word>
+      <Word>A_IsCritical</Word>
+      <Word>A_BatchLines</Word>
+      <Word>A_TitleMatchMode</Word>
+      <Word>A_TitleMatchModeSpeed</Word>
+      <Word>A_DetectHiddenWindows</Word>
+      <Word>A_DetectHiddenText</Word>
+      <Word>A_AutoTrim</Word>
+      <Word>A_StringCaseSense</Word>
+      <Word>A_FileEncoding</Word>
+      <Word>A_FormatInteger</Word>
+      <Word>A_FormatFloat</Word>
+      <Word>A_KeyDelay</Word>
+      <Word>A_WinDelay</Word>
+      <Word>A_ControlDelay</Word>
+      <Word>A_MouseDelay</Word>
+      <Word>A_DefaultMouseSpeed</Word>
+      <Word>A_IconHidden</Word>
+      <Word>A_IconTip</Word>
+      <Word>A_IconFile</Word>
+      <Word>A_IconNumber</Word>
+      <!-- User Idle Time -->
+      <Word>A_TimeIdle</Word>
+      <Word>A_TimeIdlePhysical</Word>
+      <!-- GUI Windows and Menu Bars -->
+      <Word>A_Gui</Word>
+      <Word>A_GuiControl</Word>
+      <Word>A_GuiWidth</Word>
+      <Word>A_GuiHeight</Word>
+      <Word>A_GuiX</Word>
+      <Word>A_GuiY</Word>
+      <Word>A_GuiEvent</Word>
+      <Word>A_GuiControlEvent</Word>
+      <Word>A_EventInfo</Word>
+      <!-- Hotkeys, Hotstrings, and Custom Menu Items -->
+      <Word>A_ThisMenuItem</Word>
+      <Word>A_ThisMenu</Word>
+      <Word>A_ThisMenuItemPos</Word>
+      <Word>A_ThisHotkey</Word>
+      <Word>A_PriorHotkey</Word>
+      <Word>A_TimeSinceThisHotkey</Word>
+      <Word>A_TimeSincePriorHotkey</Word>
+      <Word>A_EndChar</Word>
+      <!-- Operating System and User Info -->
+      <Word>ComSpec</Word>
+      <Word>A_Temp</Word>
+      <Word>A_OSType</Word>
+      <Word>A_OSVersion</Word>
+      <Word>A_PtrSize</Word>
+      <Word>A_Language</Word>
+      <Word>A_ComputerName</Word>
+      <Word>A_UserName</Word>
+      <Word>A_WinDir</Word>
+      <Word>A_ProgramFiles</Word>
+      <Word>ProgramFiles</Word>
+      <Word>A_AppData</Word>
+      <Word>A_AppDataCommon</Word>
+      <Word>A_Desktop</Word>
+      <Word>A_DesktopCommon</Word>
+      <Word>A_StartMenu</Word>
+      <Word>A_StartMenuCommon</Word>
+      <Word>A_Programs</Word>
+      <Word>A_ProgramsCommon</Word>
+      <Word>A_Startup</Word>
+      <Word>A_StartupCommon</Word>
+      <Word>A_MyDocuments</Word>
+      <Word>A_IsAdmin</Word>
+      <Word>A_ScreenWidth</Word>
+      <Word>A_ScreenHeight</Word>
+
+      <Word>A_IPAddress1</Word>
+      <Word>A_IPAddress2</Word>
+      <Word>A_IPAddress3</Word>
+      <Word>A_IPAddress4</Word>
+
+      <Word>A_Cursor</Word>
+      <Word>A_CaretX</Word>
+      <Word>A_CaretY</Word>
+      <Word>Clipboard</Word>
+      <Word>ClipboardAll</Word>
+      <Word>ErrorLevel</Word>
+      <Word>A_LastError</Word>
+      <Word>A_Index</Word>
+
+      <Word>A_LoopFileName</Word>
+      <Word>A_LoopFileExt</Word>
+      <Word>A_LoopFileFullPath</Word>
+      <Word>A_LoopFileLongPath</Word>
+      <Word>A_LoopFileShortPath</Word>
+      <Word>A_LoopFileShortName</Word>
+      <Word>A_LoopFileDir</Word>
+      <Word>A_LoopFileTimeModified</Word>
+      <Word>A_LoopFileTimeCreated</Word>
+      <Word>A_LoopFileTimeAccessed</Word>
+      <Word>A_LoopFileAttrib</Word>
+      <Word>A_LoopFileSize</Word>
+      <Word>A_LoopFileSizeKB</Word>
+      <Word>A_LoopFileSizeMB</Word>
+
+
+      <Word>A_LoopRegName</Word>
+      <Word>A_LoopReadLine</Word>
+      <Word>A_LoopField</Word>
+
+    </Keywords>
+
+    <!--Directives-->
+    <Keywords fontWeight="bold" foreground="greenyellow">
+
+      <Word>#Include</Word>
+      <Word>#IncludeAgain</Word>
+
+      <Word>#AllowSameLineComments</Word>
+      <Word>#ClipboardTimeout</Word>
+
+      <Word>#ErrorStdOut</Word>
+      <Word>#HotkeyInterval</Word>
+      <Word>#HotkeyModifierTimeout</Word>
+      <Word>#Hotstring</Word>
+      <Word>#If</Word>
+      <Word>#IfTimeout</Word>
+      <Word>#IfWinActive</Word>
+      <Word>#IfWinExist</Word>
+      <Word>#IfWinNotActive</Word>
+      <Word>#IfWinNotExist</Word>
+      <Word>#InstallKeybdHook</Word>
+      <Word>#InstallMouseHook</Word>
+      <Word>#KeyHistory</Word>
+      <Word>#LTrim</Word>
+      <Word>#MaxHotkeysPerInterval</Word>
+      <Word>#MaxMem</Word>
+      <Word>#MaxThreads</Word>
+      <Word>#MaxThreadsBuffer</Word>
+      <Word>#MaxThreadsPerHotkey</Word>
+      <Word>#MenuMaskKey</Word>
+      <Word>#NoEnv</Word>
+      <Word>#NoTrayIcon</Word>
+      <Word>#Persistent</Word>
+      <Word>#SingleInstance</Word>
+      <Word>#UseHook</Word>
+      <Word>#Warn</Word>
+      <Word>#WinActivateForce</Word>
+    </Keywords>
+
+
+
+    <!-- Digits -->
+    <Rule foreground="deepskyblue">
+      \b0[xX][0-9a-fA-F]+ # hex number
+      | \b
+      ( \d+(\.[0-9]+)? #number with optional floating point
+      | \.[0-9]+ #or just starting with floating point
+      )
+      ([eE][+-]?[0-9]+)? # optional exponent
+    </Rule>
+
+
+  </RuleSet>
+</SyntaxDefinition>
