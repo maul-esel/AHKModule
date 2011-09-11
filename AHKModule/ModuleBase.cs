@@ -3,6 +3,7 @@ using System.Windows.Media;
 using ChameleonCoder.Plugins;
 using ChameleonCoder.Resources.Interfaces;
 using IF = ChameleonCoder.Interaction.InformationProvider;
+using ICSharpCode.AvalonEdit.Highlighting;
 
 namespace AHKModule
 {
@@ -13,6 +14,8 @@ namespace AHKModule
         public virtual string About { get { return "© 2011 maul.esel"; } }
 
         public abstract string Description { get; }
+
+        public virtual IHighlightingDefinition Highlighting { get { return null; } }
 
         public abstract ImageSource Icon { get; }
 
