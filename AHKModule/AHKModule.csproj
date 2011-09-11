@@ -112,6 +112,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
+    <EmbeddedResource Include="Syntax.AHK_L.xshd">
+      <CustomToolNamespace>AHKModule</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\basic.png" />
