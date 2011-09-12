@@ -28,10 +28,6 @@
 
     <Span fontStyle="italic" multiline="false" begin="%[\w]" end="%" foreground="DarkOrange"/>
 
-    <Rule foreground="CadetBlue" fontWeight="bold">
-      (?&lt;=class)[\s]+[\w]+
-    </Rule>
-
     <Span color="String" multiline="true" begin="^[\s]*\(" end="^[\s]*\)" />
 
     <!-- keywords -->
@@ -59,13 +55,6 @@
       <Word>global</Word>
       <Word>static</Word>
       <Word>byref</Word>
-
-      <!-- OOP -->
-      <Word>this</Word>
-      <Word>new</Word>
-      <Word>extends</Word>
-      <Word>class</Word>
-      <Word>base</Word>
       
     </Keywords>
 
@@ -99,7 +88,6 @@
       <Word>?</Word>
       <Word>:</Word>
       <Word>.</Word>
-      <Word>~=</Word>
 
       <!-- bit operators -->
       <Word>&gt;&gt;</Word>
@@ -138,7 +126,6 @@
       <Word>!=</Word>
 
       <Word>in</Word>
-      <Word>until</Word>
       <Word>between</Word>
       <Word>contains</Word>
       <Word>is</Word>
@@ -158,7 +145,6 @@
       <Word>A_ScriptDir</Word>
       <Word>A_ScriptName</Word>
       <Word>A_ScriptFullPath</Word>
-      <Word>A_ScriptHwnd</Word>
       
       <Word>A_LineNumber</Word>
       <Word>A_LineFile</Word>
@@ -168,7 +154,6 @@
 
       <Word>A_AhkVersion</Word>
       <Word>A_AhkPath</Word>
-      <Word>A_IsUnicode</Word>
       <Word>A_IsCompiled</Word>
       <Word>A_ExitReason</Word>
 
@@ -244,7 +229,6 @@
       
       <Word>A_ThisHotkey</Word>
       <Word>A_PriorHotkey</Word>
-      <Word>A_PriorKey</Word>
       
       <Word>A_TimeSinceThisHotkey</Word>
       <Word>A_TimeSincePriorHotkey</Word>
@@ -332,7 +316,6 @@
       <Word>Click</Word>
       <Word>ClipWait</Word>
 
-      <Word>For</Word>
       <Word>Loop</Word>
       <Word>While</Word>
       <Word>Break</Word>
@@ -437,7 +420,6 @@
       <Word>MsgBox</Word>
       
       <Word>OnExit</Word>
-      <Word>OutputDebug</Word>
       <Word>Pause</Word>
       
       <Word>PixelGetColor</Word>
@@ -558,27 +540,9 @@
     <!-- functions -->
     <Keywords foreground="Chocolate">
 
-      <Word>ComObj</Word>
-      <Word>ComObjActive</Word>
-      <Word>ComObjEnwrap</Word>
-      <Word>ComObjUnwrap</Word>
-      <Word>ComObjParameter</Word>
-      <Word>ComObjMissing</Word>
-      <Word>ComObjArray</Word>
-      <Word>ComObjConnect</Word>
-      <Word>ComObjCreate</Word>
-      <Word>ComObjError</Word>
-      <Word>ComObjGet</Word>
-      <Word>ComObjType</Word>
-      <Word>ComObjValue</Word>
-
-      <Word>Object</Word>
-
       <Word>DllCall</Word>
 
       <Word>GetKeyState</Word>
-
-      <Word>FileOpen</Word>
       <Word>FileExist</Word>
 
       <Word>InStr</Word>
@@ -593,11 +557,8 @@
       <Word>Asc</Word>
       <Word>Chr</Word>
 
-      <Word>Func</Word>
-
       <Word>IsFunc</Word>
       <Word>IsLabel</Word>
-      <Word>IsObject</Word>
 
       <Word>LV_Add</Word>
       <Word>LV_Insert</Word>
@@ -626,10 +587,6 @@
       <Word>TV_GetNext</Word>
       <Word>TV_GetText</Word>
       <Word>TV_Get</Word>
-
-      <Word>Trim</Word>
-      <Word>LTrim</Word>
-      <Word>RTrim</Word>
 
       <Word>NumGet</Word>
       <Word>NumPut</Word>
@@ -677,8 +634,6 @@
       
       <Word>#Hotstring</Word>
       
-      <Word>#If</Word>
-      <Word>#IfTimeout</Word>
       <Word>#IfWinActive</Word>
       <Word>#IfWinExist</Word>
       <Word>#IfWinNotActive</Word>
@@ -703,7 +658,6 @@
       <Word>#Persistent</Word>
       <Word>#SingleInstance</Word>
       <Word>#UseHook</Word>
-      <Word>#Warn</Word>
       <Word>#WinActivateForce</Word>
 
     </Keywords>

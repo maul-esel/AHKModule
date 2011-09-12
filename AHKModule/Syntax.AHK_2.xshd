@@ -39,26 +39,12 @@
       <Word>if</Word>
       <Word>else</Word>
 
-      <Word>IfEqual</Word>
-      <Word>IfNotEqual</Word>
-      <Word>IfExist</Word>
-      <Word>IfNotExist</Word>
-      <Word>IfGreater</Word>
-      <Word>IfGreaterOrEqual</Word>
-      <Word>IfInString</Word>
-      <Word>IfNotInString</Word>
-      <Word>IfLess</Word>
-      <Word>IfLessOrEqual</Word>
-      <Word>IfMsgBox</Word>
-      <Word>IfWinActive</Word>
-      <Word>IfWinNotActive</Word>
-      <Word>IfWinExist</Word>
-      <Word>IfWinNotExist</Word>
-
+      <!-- var definitions -->
       <Word>local</Word>
       <Word>global</Word>
       <Word>static</Word>
       <Word>byref</Word>
+      <Word>var</Word>
 
       <!-- OOP -->
       <Word>this</Word>
@@ -116,7 +102,6 @@
       <Word>or</Word>
 
       <!-- assignments -->
-      <Word>=</Word>
       <Word>:=</Word>
       <Word>+=</Word>
       <Word>-=</Word>
@@ -133,13 +118,13 @@
       <Word>&gt;=</Word>
 
       <!-- comparison -->
+      <Word>=</Word>
       <Word>==</Word>
       <Word>&lt;&gt;</Word>
       <Word>!=</Word>
 
       <Word>in</Word>
       <Word>until</Word>
-      <Word>between</Word>
       <Word>contains</Word>
       <Word>is</Word>
 
@@ -150,194 +135,169 @@
       <Word>true</Word>
       <Word>false</Word>
 
-      <Word>A_Space</Word>
-      <Word>A_Tab</Word>
+      <Word>Args</Word>
 
-      <Word>A_WorkingDir</Word>
-      
-      <Word>A_ScriptDir</Word>
-      <Word>A_ScriptName</Word>
-      <Word>A_ScriptFullPath</Word>
-      <Word>A_ScriptHwnd</Word>
-      
-      <Word>A_LineNumber</Word>
-      <Word>A_LineFile</Word>
-      
-      <Word>A_ThisFunc</Word>
-      <Word>A_ThisLabel</Word>
+      <Word>Clipboard</Word>
+      <Word>ClipboardAll</Word>
 
-      <Word>A_AhkVersion</Word>
+      <Word>ErrorLevel</Word>
+
       <Word>A_AhkPath</Word>
-      <Word>A_IsUnicode</Word>
-      <Word>A_IsCompiled</Word>
-      <Word>A_ExitReason</Word>
-
-      <!-- Date and Time -->
-      <Word>A_YYYY</Word>
-      <Word>A_MM</Word>
-      <Word>A_DD</Word>
-      <Word>A_MMMM</Word>
-      <Word>A_MMM</Word>
-      <Word>A_DDDD</Word>
-      <Word>A_DDD</Word>
-      <Word>A_WDay</Word>
-      <Word>A_YDay</Word>
-      <Word>A_YWeek</Word>
-      <Word>A_Hour</Word>
-      <Word>A_Min</Word>
-      <Word>A_Sec</Word>
-      <Word>A_MSec</Word>
-      <Word>A_Now</Word>
-      <Word>A_NowUTC</Word>
-      <Word>A_TickCount</Word>
-      
-      <!-- Script Settings -->
-      <Word>A_IsSuspended</Word>
-      <Word>A_IsPaused</Word>
-      <Word>A_IsCritical</Word>
-      
-      <Word>A_BatchLines</Word>
-      
-      <Word>A_TitleMatchMode</Word>
-      <Word>A_TitleMatchModeSpeed</Word>
-      
-      <Word>A_DetectHiddenWindows</Word>
-      <Word>A_DetectHiddenText</Word>
-      
-      <Word>A_AutoTrim</Word>
-      <Word>A_StringCaseSense</Word>
-      <Word>A_FileEncoding</Word>
-      
-      <Word>A_FormatInteger</Word>
-      <Word>A_FormatFloat</Word>
-      
-      <Word>A_KeyDelay</Word>
-      <Word>A_WinDelay</Word>
-      <Word>A_ControlDelay</Word>
-      <Word>A_MouseDelay</Word>
-      <Word>A_DefaultMouseSpeed</Word>
-      
-      <Word>A_IconHidden</Word>
-      <Word>A_IconTip</Word>
-      <Word>A_IconFile</Word>
-      <Word>A_IconNumber</Word>
-      
-      <!-- User Idle Time -->
-      <Word>A_TimeIdle</Word>
-      <Word>A_TimeIdlePhysical</Word>
-      
-      <!-- GUI Windows and Menu Bars -->
-      <Word>A_Gui</Word>
-      <Word>A_GuiControl</Word>
-      <Word>A_GuiWidth</Word>
-      <Word>A_GuiHeight</Word>
-      <Word>A_GuiX</Word>
-      <Word>A_GuiY</Word>
-      <Word>A_GuiEvent</Word>
-      <Word>A_GuiControlEvent</Word>
-      <Word>A_EventInfo</Word>
-      
-      <!-- Hotkeys, Hotstrings, and Custom Menu Items -->
-      <Word>A_ThisMenuItem</Word>
-      <Word>A_ThisMenu</Word>
-      <Word>A_ThisMenuItemPos</Word>
-      
-      <Word>A_ThisHotkey</Word>
-      <Word>A_PriorHotkey</Word>
-      <Word>A_PriorKey</Word>
-      
-      <Word>A_TimeSinceThisHotkey</Word>
-      <Word>A_TimeSincePriorHotkey</Word>
-      <Word>A_EndChar</Word>
-      
-      <!-- Operating System and User Info -->
-      <Word>ComSpec</Word>
-      <Word>A_Temp</Word>
-      <Word>A_OSType</Word>
-      <Word>A_OSVersion</Word>
-      <Word>A_PtrSize</Word>
-      <Word>A_Language</Word>
-      
-      <Word>A_ComputerName</Word>
-      <Word>A_UserName</Word>
-      
-      <Word>A_WinDir</Word>
-      <Word>A_ProgramFiles</Word>
-      <Word>ProgramFiles</Word>
+      <Word>A_AhkVersion</Word>
       <Word>A_AppData</Word>
       <Word>A_AppDataCommon</Word>
+
+      <Word>A_CaretX</Word>
+      <Word>A_CaretY</Word>
+      <Word>A_ComputerName</Word>
+      <Word>A_ComSpec</Word>
+      <Word>A_ControlDelay</Word>
+      <Word>A_Cursor</Word>
+
+      <Word>A_DD</Word>
+      <Word>A_DDD</Word>
+      <Word>A_DDDD</Word>
+      <Word>A_DefaultMouseSpeed</Word>
       <Word>A_Desktop</Word>
       <Word>A_DesktopCommon</Word>
-      <Word>A_StartMenu</Word>
-      <Word>A_StartMenuCommon</Word>
-      <Word>A_Programs</Word>
-      <Word>A_ProgramsCommon</Word>
-      <Word>A_Startup</Word>
-      <Word>A_StartupCommon</Word>
-      <Word>A_MyDocuments</Word>
-      
-      <Word>A_IsAdmin</Word>
-      <Word>A_ScreenWidth</Word>
-      <Word>A_ScreenHeight</Word>
+      <Word>A_DetectHiddenText</Word>
+      <Word>A_DetectHiddenWindows</Word>
 
+      <Word>A_EndChar</Word>
+      <Word>A_EventInfo</Word>
+      <Word>A_ExitReason</Word>
+
+      <Word>A_FileEncoding</Word>
+
+      <Word>A_Gui</Word>
+      <Word>A_GuiControl</Word>
+      <Word>A_GuiControlEvent</Word>
+      <Word>A_GuiEvent</Word>
+      <Word>A_GuiHeight</Word>
+      <Word>A_GuiWidth</Word>      
+      <Word>A_GuiX</Word>
+      <Word>A_GuiY</Word>
+      
+      <Word>A_Hour</Word>
+
+      <Word>A_IconHidden</Word>
+      <Word>A_IconFile</Word>
+      <Word>A_IconNumber</Word>
+      <Word>A_IconTip</Word>
+      <Word>A_Index</Word>
+      <Word>A_InitialWorkingDir</Word>
       <Word>A_IPAddress1</Word>
       <Word>A_IPAddress2</Word>
       <Word>A_IPAddress3</Word>
       <Word>A_IPAddress4</Word>
+      <Word>A_IsAdmin</Word>
+      <Word>A_IsCompiled</Word>
+      <Word>A_IsCritical</Word>
+      <Word>A_IsPaused</Word>
+      <Word>A_IsSuspended</Word>
+      <Word>A_IsUnicode</Word>
 
-      <Word>A_Cursor</Word>
-      <Word>A_CaretX</Word>
-      <Word>A_CaretY</Word>
-      
-      <Word>Clipboard</Word>
-      <Word>ClipboardAll</Word>
-      
-      <Word>ErrorLevel</Word>
+      <Word>A_KeyDelay</Word>
+
+      <Word>A_Language</Word>
       <Word>A_LastError</Word>
-      
-      <Word>A_Index</Word>
-
-      <Word>A_LoopFileName</Word>
+      <Word>A_LineFile</Word>
+      <Word>A_LineNumber</Word>
+      <Word>A_LoopField</Word>
+      <Word>A_LoopFileAttrib</Word>
+      <Word>A_LoopFileDir</Word>
       <Word>A_LoopFileExt</Word>
       <Word>A_LoopFileFullPath</Word>
-      <Word>A_LoopFileLongPath</Word>
-      <Word>A_LoopFileShortPath</Word>
+      <Word>A_LoopFileName</Word>
+      <Word>A_LoopFilePath</Word>
       <Word>A_LoopFileShortName</Word>
-      <Word>A_LoopFileDir</Word>
-      <Word>A_LoopFileTimeModified</Word>
-      <Word>A_LoopFileTimeCreated</Word>
-      <Word>A_LoopFileTimeAccessed</Word>
-      <Word>A_LoopFileAttrib</Word>
+      <Word>A_LoopFileShortPath</Word>
       <Word>A_LoopFileSize</Word>
       <Word>A_LoopFileSizeKB</Word>
       <Word>A_LoopFileSizeMB</Word>
-
-      <Word>A_LoopRegName</Word>
-      <Word>A_LoopRegType</Word>
+      <Word>A_LoopFileTimeAccessed</Word>
+      <Word>A_LoopFileTimeCreated</Word>
+      <Word>A_LoopFileTimeModified</Word>
+      <Word>A_LoopReadLine</Word>
       <Word>A_LoopRegKey</Word>
+      <Word>A_LoopRegName</Word>
       <Word>A_LoopRegSubKey</Word>
       <Word>A_LoopRegTimeModified</Word>
+      <Word>A_LoopRegType</Word>
+
+      <Word>A_Min</Word>
+      <Word>A_MM</Word>
+      <Word>A_MMM</Word>
+      <Word>A_MMMM</Word>
+      <Word>A_MouseDelay</Word>
+      <Word>A_MSec</Word>
+      <Word>A_MsgBoxResult</Word>
+      <Word>A_MyDocuments</Word>
+
+      <Word>A_Now</Word>
+      <Word>A_NowUTC</Word>
+
+      <Word>A_OSVersion</Word>
+
+      <Word>A_PriorHotkey</Word>
+      <Word>A_PriorKey</Word>
+      <Word>A_ProgramFiles</Word>
+      <Word>A_Programs</Word>
+      <Word>A_ProgramsCommon</Word>
+      <Word>A_PtrSize</Word>
+
+      <Word>A_ScreenHeight</Word>
+      <Word>A_ScreenWidth</Word>
+      <Word>A_ScriptDir</Word>
+      <Word>A_ScriptFullPath</Word>
+      <Word>A_ScriptHwnd</Word>
+      <Word>A_ScriptName</Word>
+      <Word>A_Sec</Word>
+      <Word>A_Space</Word>
+      <Word>A_StartMenu</Word>
+      <Word>A_StartMenuCommon</Word>
+      <Word>A_Startup</Word>
+      <Word>A_StartupCommon</Word>
+      <Word>A_StringCaseSense</Word>
       
-      <Word>A_LoopReadLine</Word>
-      <Word>A_LoopField</Word>
+      <Word>A_Tab</Word>
+      <Word>A_Temp</Word>
+      <Word>A_ThisFunc</Word>
+      <Word>A_ThisHotkey</Word>
+      <Word>A_ThisLabel</Word>
+      <Word>A_ThisMenu</Word>
+      <Word>A_ThisMenuItem</Word>
+      <Word>A_ThisMenuItemPos</Word>
+      <Word>A_TickCount</Word>
+      <Word>A_TimeIdle</Word>
+      <Word>A_TimeIdlePhysical</Word>
+      <Word>A_TimeSincePriorHotkey</Word>
+      <Word>A_TimeSinceThisHotkey</Word>      
+      <Word>A_TitleMatchMode</Word>
+      <Word>A_TitleMatchModeSpeed</Word>
+
+      <Word>A_UserName</Word>
+
+      <Word>A_WDay</Word>
+      <Word>A_WinDelay</Word>
+      <Word>A_WinDir</Word>
+      <Word>A_WorkingDir</Word>
+
+      <Word>A_YDay</Word>
+      <Word>A_YWeek</Word>
+      <Word>A_YYYY</Word>
 
     </Keywords>
 
     <!-- commands -->
     <Keywords fontWeight="bold" foreground="blue">
 
-      <Word>AutoTrim</Word>
       <Word>BlockInput</Word>
-
+      <Word>Break</Word>
+      
       <Word>Click</Word>
       <Word>ClipWait</Word>
-
-      <Word>For</Word>
-      <Word>Loop</Word>
-      <Word>While</Word>
-      <Word>Break</Word>
       <Word>Continue</Word>
-      
       <Word>Control</Word>
       <Word>ControlClick</Word>
       <Word>ControlFocus</Word>
@@ -349,33 +309,36 @@
       <Word>ControlSend</Word>
       <Word>ControlSendRaw</Word>
       <Word>ControlSetText</Word>
-
       <Word>CoordMode</Word>
       <Word>Critical</Word>
       
+      <Word>Deref</Word>
       <Word>DetectHiddenText</Word>
       <Word>DetectHiddenWindows</Word>
+
+      <Word>For</Word>
       
+      <Word>Loop</Word>
+      <Word>LoopFiles</Word>
+      <Word>LoopParse</Word>
+      <Word>LoopRead</Word>
+      <Word>LoopReg</Word>      
+
+      <Word>DirCopy</Word>
+      <Word>DirCreate</Word>
+      <Word>DirDelete</Word>
+      <Word>DirMove</Word>
+      <Word>Download</Word>      
       <Word>Drive</Word>
       <Word>DriveGet</Word>
-      <Word>DriveSpaceFree</Word>
 
       <Word>Edit</Word>
-
-      <Word>EnvAdd</Word>
-      <Word>EnvDiv</Word>
-      <Word>EnvMult</Word>
       <Word>EnvSet</Word>
-      <Word>EnvSub</Word>
-      <Word>EnvUpdate</Word>
-
       <Word>Exit</Word>
       <Word>ExitApp</Word>
 
       <Word>FileAppend</Word>
       <Word>FileCopy</Word>
-      <Word>FileCopyDir</Word>
-      <Word>FileCreateDir</Word>
       <Word>FileCreateShortcut</Word>
       <Word>FileDelete</Word>
       <Word>FileEncoding</Word>
@@ -386,40 +349,35 @@
       <Word>FileGetTime</Word>
       <Word>FileGetVersion</Word>
       <Word>FileMove</Word>
-      <Word>FileMoveDir</Word>
       <Word>FileRead</Word>
-      <Word>FileReadLine</Word>
       <Word>FileRecycle</Word>
-      <Word>FileRecycleEmpty</Word>
-      <Word>FileRemoveDir</Word>
+      <Word>FileRecycleEmpty</Word>      
       <Word>FileSelectFile</Word>
       <Word>FileSelectFolder</Word>
       <Word>FileSetAttrib</Word>
-      <Word>FileSetTime</Word>
-      
+      <Word>FileSetTime</Word>      
       <Word>FormatTime</Word>
-      <Word>GetKeyState</Word>
-      <Word>Gosub</Word>
-      <Word>Goto</Word>
       
+      <Word>GetKeyState</Word>
       <Word>GroupActivate</Word>
       <Word>GroupAdd</Word>
       <Word>GroupClose</Word>
       <Word>GroupDeactivate</Word>
-      
+      <Word>Gosub</Word>
+      <Word>Goto</Word>
       <Word>Gui</Word>
       <Word>GuiControl</Word>
       <Word>GuiControlGet</Word>
       
       <Word>Hotkey</Word>
-      <Word>ImageSearch</Word>
       
+      <Word>ImageSearch</Word>      
       <Word>IniDelete</Word>
       <Word>IniRead</Word>
-      <Word>IniWrite</Word>
-      
+      <Word>IniWrite</Word>      
       <Word>Input</Word>
       <Word>InputBox</Word>
+      
       <Word>KeyHistory</Word>
       <Word>KeyWait</Word>
       
@@ -428,52 +386,42 @@
       <Word>ListVars</Word>
       
       <Word>Menu</Word>
-      
+      <Word>MenuSelect</Word>
       <Word>MouseClick</Word>
       <Word>MouseClickDrag</Word>
       <Word>MouseGetPos</Word>
-      <Word>MouseMove</Word>
-      
+      <Word>MouseMove</Word>      
       <Word>MsgBox</Word>
       
       <Word>OnExit</Word>
       <Word>OutputDebug</Word>
-      <Word>Pause</Word>
       
+      <Word>Pause</Word>      
       <Word>PixelGetColor</Word>
-      <Word>PixelSearch</Word>
-      
+      <Word>PixelSearch</Word>      
       <Word>PostMessage</Word>
       <Word>Process</Word>
-      <Word>Progress</Word>
-      <Word>Random</Word>
       
+      <Word>Random</Word>      
       <Word>RegDelete</Word>
       <Word>RegRead</Word>
-      <Word>RegWrite</Word>
-      
+      <Word>RegWrite</Word>      
       <Word>Reload</Word>
-      <Word>Return</Word>
-      
+      <Word>Return</Word>      
       <Word>Run</Word>
       <Word>RunAs</Word>
       <Word>RunWait</Word>
       
       <Word>Send</Word>
       <Word>SendInput</Word>
-      <Word>SendPlay</Word>
-      <Word>SendRaw</Word>
-      
       <Word>SendMessage</Word>
-      
       <Word>SendMode</Word>
+      <Word>SendPlay</Word>
+      <Word>SendRaw</Word>      
       
-      <Word>SetBatchLines</Word>
       <Word>SetCapslockState</Word>
       <Word>SetControlDelay</Word>
       <Word>SetDefaultMouseSpeed</Word>
-      <Word>SetEnv</Word>
-      <Word>SetFormat</Word>
       <Word>SetKeyDelay</Word>
       <Word>SetMouseDelay</Word>
       <Word>SetNumLockState</Word>
@@ -482,64 +430,40 @@
       <Word>SetTimer</Word>
       <Word>SetTitleMatchMode</Word>
       <Word>SetWinDelay</Word>
-      <Word>SetWorkingDir</Word>
-      
+      <Word>SetWorkingDir</Word>      
       <Word>Shutdown</Word>
       <Word>Sleep</Word>
-      <Word>Sort</Word>
-      
+      <Word>Sort</Word>      
       <Word>SoundBeep</Word>
       <Word>SoundPlay</Word>
-      <Word>SoundSet</Word>
-      <Word>SoundSetWaveVolume</Word>
-      <Word>SoundGetWaveVolume</Word>
-      
-      <Word>SplashImage</Word>
-      <Word>SplashTextOn</Word>
-      <Word>SplashTextOff</Word>
-      
-      <Word>SplitPath</Word>
-      
+      <Word>SoundSet</Word>      
+      <Word>SplitPath</Word>      
       <Word>StatusBarGetText</Word>
-      <Word>StatusBarWait</Word>
-      
-      <Word>StringCaseSense</Word>
-      <Word>StringGetPos</Word>
-      <Word>StringLeft</Word>
-      <Word>StringLen</Word>
-      <Word>StringLower</Word>
-      <Word>StringMid</Word>
-      <Word>StringReplace</Word>
-      <Word>StringRight</Word>
-      <Word>StringSplit</Word>
-      <Word>StringTrimLeft</Word>
-      <Word>StringTrimRight</Word>
-      <Word>StringUpper</Word>
-      
+      <Word>StatusBarWait</Word>      
+      <Word>StrCaseSense</Word>
+      <Word>StrLower</Word>
+      <Word>StrReplace</Word>
+      <Word>StrUpper</Word>      
       <Word>Suspend</Word>
       <Word>SysGet</Word>
+      
       <Word>Thread</Word>
-      <Word>Tooltip</Word>
-      <Word>Transform</Word>
-      
+      <Word>Tooltip</Word>      
       <Word>TrayTip</Word>
-      <Word>Trim</Word>
-      <Word>UrlDownloadToFile</Word>
-      
+      <Word>Trim</Word>      
+
+      <Word>While</Word>      
       <Word>WinActivate</Word>
       <Word>WinActivateBottom</Word>
       <Word>WinClose</Word>
-      <Word>WinGetActiveStats</Word>
-      <Word>WinGetActiveTitle</Word>
-      <Word>WinGetClass</Word>
       <Word>WinGet</Word>
+      <Word>WinGetClass</Word>      
       <Word>WinGetPos</Word>
       <Word>WinGetText</Word>
       <Word>WinGetTitle</Word>
       <Word>WinHide</Word>
       <Word>WinKill</Word>
-      <Word>WinMaximize</Word>
-      <Word>WinMenuSelectItem</Word>
+      <Word>WinMaximize</Word>      
       <Word>WinMinimize</Word>
       <Word>WinMinimizeAll</Word>
       <Word>WinMinimizeAllUndo</Word>
@@ -558,123 +482,119 @@
     <!-- functions -->
     <Keywords foreground="Chocolate">
 
+      <Word>Abs</Word>
+      <Word>ACos</Word>
+      <Word>Asc</Word>
+      <Word>ASin</Word>
+      <Word>ATan</Word>
+
+      <Word>Ceil</Word>
+      <Word>Chr</Word>
       <Word>ComObj</Word>
       <Word>ComObjActive</Word>
-      <Word>ComObjEnwrap</Word>
-      <Word>ComObjUnwrap</Word>
-      <Word>ComObjParameter</Word>
-      <Word>ComObjMissing</Word>
       <Word>ComObjArray</Word>
       <Word>ComObjConnect</Word>
       <Word>ComObjCreate</Word>
+      <Word>ComObjEnwrap</Word>
       <Word>ComObjError</Word>
       <Word>ComObjGet</Word>
+      <Word>ComObjMissing</Word>
+      <Word>ComObjParameter</Word>
       <Word>ComObjType</Word>
+      <Word>ComObjUnwrap</Word>
       <Word>ComObjValue</Word>
+      <Word>Cos</Word>
 
-      <Word>Object</Word>
-
+      <Word>DateAdd</Word>
+      <Word>DateDiff</Word>
+      <Word>DirExist</Word>
       <Word>DllCall</Word>
+
+      <Word>Exp</Word>
+
+      <Word>FileExist</Word>
+      <Word>FileOpen</Word>
+      <Word>Floor</Word>
+      <Word>Func</Word>
 
       <Word>GetKeyState</Word>
 
-      <Word>FileOpen</Word>
-      <Word>FileExist</Word>
-
+      <Word>IL_Add</Word>
+      <Word>IL_Create</Word>      
+      <Word>IL_Destroy</Word>
       <Word>InStr</Word>
-      <Word>RegExMatch</Word>
-      <Word>RegExReplace</Word>
-      <Word>SubStr</Word>
-      <Word>StrLen</Word>
-
-      <Word>WinActive</Word>
-      <Word>WinExist</Word>
-
-      <Word>Asc</Word>
-      <Word>Chr</Word>
-
-      <Word>Func</Word>
-
       <Word>IsFunc</Word>
       <Word>IsLabel</Word>
       <Word>IsObject</Word>
 
+      <Word>Ln</Word>
+      <Word>Log</Word>      
+      <Word>LTrim</Word>
       <Word>LV_Add</Word>
-      <Word>LV_Insert</Word>
-      <Word>LV_Modify</Word>
       <Word>LV_Delete</Word>
-      <Word>LV_ModifyCol</Word>
-      <Word>LV_InsertCol</Word>
       <Word>LV_DeleteCol</Word>
       <Word>LV_GetCount</Word>
       <Word>LV_GetNext</Word>
       <Word>LV_GetText</Word>
+      <Word>LV_Insert</Word>
+      <Word>LV_InsertCol</Word>
+      <Word>LV_Modify</Word>      
+      <Word>LV_ModifyCol</Word>
       <Word>LV_SetImageList</Word>
 
-      <Word>IL_Create</Word>
-      <Word>IL_Add</Word>
-      <Word>IL_Destroy</Word>
-
-      <Word>TV_Add</Word>
-      <Word>TV_Modify</Word>
-      <Word>TV_Delete</Word>
-      <Word>TV_GetSelection</Word>
-      <Word>TV_GetCount</Word>
-      <Word>TV_GetParent</Word>
-      <Word>TV_GetChild</Word>
-      <Word>TV_GetPrev</Word>
-      <Word>TV_GetNext</Word>
-      <Word>TV_GetText</Word>
-      <Word>TV_Get</Word>
-
-      <Word>Trim</Word>
-      <Word>LTrim</Word>
-      <Word>RTrim</Word>
+      <Word>Mod</Word>
 
       <Word>NumGet</Word>
       <Word>NumPut</Word>
 
+      <Word>Object</Word>
       <Word>OnMessage</Word>
-
-      <Word>StrGet</Word>
-      <Word>StrPut</Word>
-
+      
+      <Word>RegExMatch</Word>
+      <Word>RegExReplace</Word>
       <Word>RegisterCallback</Word>
+      <Word>Round</Word>
+      <Word>RTrim</Word>
+
+      <Word>Sin</Word>
+      <Word>Sqrt</Word>
+      <Word>StrGet</Word>
+      <Word>StrLen</Word>
+      <Word>StrPut</Word>
+      <Word>StrSplit</Word>
+      <Word>SubStr</Word>
+
+      <Word>Tan</Word>
       <Word>Trim</Word>
+      <Word>TV_Add</Word>
+      <Word>TV_Delete</Word>
+      <Word>TV_Get</Word>
+      <Word>TV_GetChild</Word>
+      <Word>TV_GetCount</Word>
+      <Word>TV_GetParent</Word>
+      <Word>TV_GetNext</Word>
+      <Word>TV_GetPrev</Word>
+      <Word>TV_GetSelection</Word>
+      <Word>TV_GetText</Word>
+      <Word>TV_Modify</Word>
+      <Word>Type</Word>
+
       <Word>VarSetCapacity</Word>
 
-      <Word>Abs</Word>
-      <Word>Ceil</Word>
-      <Word>Exp</Word>
-      <Word>Floor</Word>
-      <Word>Log</Word>
-      <Word>Ln</Word>
-      <Word>Mod</Word>
-      <Word>Round</Word>
-      <Word>Sqrt</Word>
-      <Word>Sin</Word>
-      <Word>Cos</Word>
-      <Word>Tan</Word>
-      <Word>ASin</Word>
-      <Word>ACos</Word>
-      <Word>ATan</Word>
+      <Word>WinActive</Word>
+      <Word>WinExist</Word>
       
     </Keywords>    
 
     <!--Directives-->
     <Keywords foreground="blue">
 
-      <Word>#AllowSameLineComments</Word>
       <Word>#ClipboardTimeout</Word>
-      <Word>#CommentFlag</Word>
+      
       <Word>#ErrorStdOut</Word>
-      <Word>#EscapeChar</Word>
-      <Word>#DerefChar</Word>
-      <Word>#Delimiter</Word>
       
       <Word>#HotkeyInterval</Word>
-      <Word>#HotkeyModifierTimeout</Word>
-      
+      <Word>#HotkeyModifierTimeout</Word>      
       <Word>#Hotstring</Word>
       
       <Word>#If</Word>
@@ -685,24 +605,25 @@
       <Word>#IfWinNotExist</Word>
       
       <Word>#Include</Word>
-      <Word>#IncludeAgain</Word>
-      
+      <Word>#IncludeAgain</Word>      
       <Word>#InstallKeybdHook</Word>
       <Word>#InstallMouseHook</Word>
       
       <Word>#KeyHistory</Word>
-      <Word>#LTrim</Word>
+      
       <Word>#MaxHotkeysPerInterval</Word>
-      <Word>#MaxMem</Word>
       <Word>#MaxThreads</Word>
       <Word>#MaxThreadsBuffer</Word>
-      <Word>#MaxThreadsPerHotkey</Word>
+      <Word>#MaxThreadsPerHotkey</Word>      
       <Word>#MenuMaskKey</Word>
-      <Word>#NoEnv</Word>
+      <Word>#MustDeclare</Word>
+      
       <Word>#NoTrayIcon</Word>
-      <Word>#Persistent</Word>
+      
       <Word>#SingleInstance</Word>
+      
       <Word>#UseHook</Word>
+      
       <Word>#Warn</Word>
       <Word>#WinActivateForce</Word>
 

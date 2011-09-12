@@ -45,6 +45,7 @@
     </Reference>
     <Reference Include="ChameleonCoder.ComponentCore">
       <HintPath>..\..\ChameleonCoder\Deploy\Components\ChameleonCoder.ComponentCore.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="ICSharpCode.AvalonEdit">
       <HintPath>..\..\Avalon\ICSharpCode.AvalonEdit.dll</HintPath>
@@ -106,6 +107,12 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Syntax.AHK.xshd">
+      <CustomToolNamespace>AHKModule</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Syntax.AHK_2.xshd">
+      <CustomToolNamespace>AHKModule</CustomToolNamespace>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
