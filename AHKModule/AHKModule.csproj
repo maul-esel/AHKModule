@@ -70,6 +70,10 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AhkDotNetTool.cs" />
+    <Compile Include="AhkDotNetWindow.xaml.cs">
+      <DependentUpon>AhkDotNetWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AutoHotkey.cs" />
     <Compile Include="AutoHotkey2.cs" />
     <Compile Include="AutoHotkey_L.cs" />
@@ -127,6 +131,10 @@
     <Resource Include="Icons\basic.png" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="AhkDotNetWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CompileAHK_NET.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +160,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\version2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="autohotkey.net.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
