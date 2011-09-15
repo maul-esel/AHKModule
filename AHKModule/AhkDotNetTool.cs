@@ -18,11 +18,11 @@ namespace AhkModule
 
         public string Version { get { return "0.1"; } }
 
-        public ImageSource Icon { get { return new System.Windows.Media.Imaging.BitmapImage(new Uri("pack://application:,,,/AHKModule;component/autohotkey.net.png")); } }
+        public ImageSource Icon { get { return new System.Windows.Media.Imaging.BitmapImage(new Uri("pack://application:,,,/AhkModule;component/autohotkey.net.png")); } }
 
         public Guid Identifier { get { return new Guid("{98376daa-c496-4f03-aefb-d6385010c0f1}"); } }
 
-        public string Name { get { return "AHK.Net"; } }
+        public string Name { get { return "AHK.Net Uploader"; } }
 
         public void Initialize() { }
 
