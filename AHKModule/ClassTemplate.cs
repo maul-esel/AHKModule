@@ -39,14 +39,6 @@ namespace AhkModule
             get { return "AutoHotkey v1.1 / v2"; }
         }
 
-        public IEnumerable<Guid> Languages
-        {
-            get
-            {
-                return new List<Guid>(new Guid[2] { AutoHotkey_L.Guid, AutoHotkey2.Guid });
-            }
-        }
-
         public IResource Create(IResource parent, string name)
         {
             i++;
