@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Windows.Media;
-using System.Linq;
-using System.Text;
-using ChameleonCoder.Plugins;
 using System.Net;
+using System.Windows.Media;
+using ChameleonCoder.Plugins;
 
 namespace AhkModule
 {
@@ -37,41 +34,54 @@ namespace AhkModule
             if (window.ShowDialog() == false)
                 return;
 
-            string username = window.Username;
-            string password = window.Password;
-
-            var files = window.Files;
-            foreach (var file in files)
+            using (var password = window.Password)
             {
-                FtpWebRequest request = (FtpWebRequest)WebRequest.Create("ftp://autohotkey.net/" + "mytestFile.xyz");
-                request.Method = WebRequestMethods.Ftp.UploadFile;
-                request.Credentials = new NetworkCredential(username, password);
-
-                try
-                {
-                    request.GetResponse();
-                }
-                catch (Exception)
-                {
-                    // report error
+                string username = window.Username;
+                if (string.IsNullOrEmpty(username))
                     return;
-                }
-                // report success
 
-                try
+                var files = window.Files;
+                foreach (var file in files)
                 {
-                    var stream = request.GetRequestStream();
-                    using (var filestream = new System.IO.FileStream(@"C:\Users\Dominik\galettes.txt", System.IO.FileMode.Open, System.IO.FileAccess.Read))
-                    {
-                        filestream.CopyTo(stream);
+                    WebRequest request = WebRequest.Create(new Uri("ftp://autohotkey.net/" + file.FtpPath));
+                    try
+                    {                        
+                        request.Method = WebRequestMethods.Ftp.UploadFile;
+                        request.Credentials = new NetworkCredential(username, password);
+
+                        try
+                        {
+                            request.GetResponse();
+                        }
+                        catch (Exception e)
+                        {
+                            // report error
+                            System.Windows.MessageBox.Show(e.ToString());
+                            break;
+                        }
+                        // report success
+
+                        try
+                        {
+                            using (var stream = request.GetRequestStream())
+                            {
+                                using (var filestream = new System.IO.FileStream(file.LocalPath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                                {
+                                    filestream.CopyTo(stream);
+                                }
+                            }
+                        }
+                        catch (Exception e)
+                        {
+                            System.Windows.MessageBox.Show(e.ToString());
+                            break;
+                        }
                     }
-                    stream.Close();
+                    finally
+                    {
+                        request.Abort();
+                    }
                 }
-                catch (Exception e)
-                {
-                    System.Windows.MessageBox.Show(e.ToString());
-                }
-                request.Abort();
             }
         }
 
