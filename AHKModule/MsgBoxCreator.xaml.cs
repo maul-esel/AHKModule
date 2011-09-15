@@ -6,7 +6,7 @@ using Forms = System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
 
-namespace AHKModule
+namespace AhkModule
 {
     internal delegate void MsgBoxCreatorEvent();
     /// <summary>
@@ -144,7 +144,7 @@ namespace AHKModule
 
         /// <summary>
         /// parses code and creates the MsgBox.
-        /// This code is taken from the IronAHK project: www.ironahk.net
+        /// This code is taken from the IronAhk project: www.ironahk.net
         /// </summary>
         /// <param name="Options"></param>
         /// <param name="Title"></param>

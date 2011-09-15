@@ -5,7 +5,7 @@ using ICSharpCode.AvalonEdit.Document;
 using ICSharpCode.AvalonEdit.Editing;
 
 
-namespace AHKModule.Lexing
+namespace AhkModule.Lexing
 {
     class CommandCompletionData : ICompletionData
     {

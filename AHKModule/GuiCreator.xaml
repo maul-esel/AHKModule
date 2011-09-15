@@ -1,4 +1,4 @@
-﻿<Window x:Class="AHKModule.GuiCreator"
+﻿<Window x:Class="AhkModule.GuiCreator"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:winform="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"

@@ -6,7 +6,7 @@ using System.Text;
 using ChameleonCoder.Plugins;
 using System.Net;
 
-namespace AHKModule
+namespace AhkModule
 {
     [ChameleonCoder.CCPlugin]
     public class AhkDotNetTool : IService
@@ -71,9 +71,8 @@ namespace AHKModule
                 {
                     System.Windows.MessageBox.Show(e.ToString());
                 }
+                request.Abort();
             }
-     
-            request.Abort();
         }
 
         public bool IsBusy { get; set; }

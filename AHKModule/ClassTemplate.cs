@@ -4,7 +4,7 @@ using System.Windows.Media;
 using ChameleonCoder.Plugins;
 using ChameleonCoder.Resources.Interfaces;
 
-namespace AHKModule
+namespace AhkModule
 {
     [ChameleonCoder.CCPlugin]
     public class ClassTemplate : ITemplate

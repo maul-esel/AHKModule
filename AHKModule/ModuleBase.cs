@@ -5,7 +5,7 @@ using ChameleonCoder.Resources.Interfaces;
 using IF = ChameleonCoder.Interaction.InformationProvider;
 using ICSharpCode.AvalonEdit.Highlighting;
 
-namespace AHKModule
+namespace AhkModule
 {
     public abstract class ModuleBase : ILanguageModule
     {

@@ -1,6 +1,6 @@
 ﻿using System.Windows;
 
-namespace AHKModule
+namespace AhkModule
 {
     /// <summary>
     /// Interaktionslogik für GuiCreator.xaml

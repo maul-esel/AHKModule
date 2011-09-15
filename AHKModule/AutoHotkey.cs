@@ -4,7 +4,7 @@ using System.Windows.Media.Imaging;
 using ICSharpCode.AvalonEdit.Highlighting;
 using XshdLoader = ICSharpCode.AvalonEdit.Highlighting.Xshd.HighlightingLoader;
 
-namespace AHKModule
+namespace AhkModule
 {
     [ChameleonCoder.CCPlugin]
     public class AutoHotkey : ModuleBase
@@ -30,7 +30,7 @@ namespace AHKModule
 
         public override ImageSource Icon
         {
-            get { return new BitmapImage(new Uri("pack://application:,,,/AHKModule;component/Icons/basic.png")).GetAsFrozen() as ImageSource; }
+            get { return new BitmapImage(new Uri("pack://application:,,,/AhkModule;component/Icons/basic.png")).GetAsFrozen() as ImageSource; }
         }
 
         public override Guid Identifier

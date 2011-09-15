@@ -1,7 +1,7 @@
 ﻿using System.Windows.Controls;
 using System.Windows.Media;
 
-namespace AHKModule
+namespace AhkModule
 {
     /// <summary>
     /// Interaktionslogik für ImageCheckBox.xaml

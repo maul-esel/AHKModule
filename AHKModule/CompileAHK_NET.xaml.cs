@@ -2,7 +2,7 @@
 using ChameleonCoder.Resources;
 using ChameleonCoder.Resources.Interfaces;
 
-namespace AHKModule
+namespace AhkModule
 {
     /// <summary>
     /// Interaktionslogik für CompileAHK_NET.xaml

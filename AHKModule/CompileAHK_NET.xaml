@@ -1,4 +1,4 @@
-﻿<Window x:Class="AHKModule.CompileAHK_NET"
+﻿<Window x:Class="AhkModule.CompileAHK_NET"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:res="clr-namespace:ChameleonCoder.Resources;assembly=ChameleonCoder"
