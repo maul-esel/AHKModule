@@ -1,6 +1,6 @@
 ﻿namespace AhkModule
 {
-    internal struct UploadFile
+    internal class UploadFile
     {
         public string LocalPath { get; internal set; }
 
