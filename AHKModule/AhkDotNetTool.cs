@@ -40,48 +40,42 @@ namespace AhkModule
                 if (string.IsNullOrEmpty(username))
                     return;
 
+                bool success = true;
                 var files = window.Files;
                 foreach (var file in files)
                 {
                     WebRequest request = WebRequest.Create(new Uri("ftp://autohotkey.net/" + file.FtpPath));
+                    System.Windows.MessageBox.Show(file.FtpPath);
                     try
-                    {                        
+                    {
                         request.Method = WebRequestMethods.Ftp.UploadFile;
                         request.Credentials = new NetworkCredential(username, password);
 
-                        try
-                        {
-                            request.GetResponse();
-                        }
-                        catch (Exception e)
-                        {
-                            // report error
-                            System.Windows.MessageBox.Show(e.ToString());
-                            break;
-                        }
-                        // report success
+                        request.GetResponse();
 
-                        try
+                        using (var stream = request.GetRequestStream())
                         {
-                            using (var stream = request.GetRequestStream())
+                            using (var filestream = new System.IO.FileStream(file.LocalPath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
                             {
-                                using (var filestream = new System.IO.FileStream(file.LocalPath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
-                                {
-                                    filestream.CopyTo(stream);
-                                }
+                                filestream.CopyTo(stream);
                             }
                         }
-                        catch (Exception e)
-                        {
-                            System.Windows.MessageBox.Show(e.ToString());
-                            break;
-                        }
+                    }
+                    catch (Exception e)
+                    {
+                        System.Windows.MessageBox.Show(e.ToString());
+                        success = false;
+                        break;
                     }
                     finally
                     {
                         request.Abort();
                     }
                 }
+                if (success)
+                    System.Windows.MessageBox.Show("complete!");
+                else
+                    System.Windows.MessageBox.Show("error!");
             }
         }
 
