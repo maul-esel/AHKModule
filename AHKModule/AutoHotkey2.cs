@@ -15,7 +15,7 @@ namespace AhkModule
             {
                 if (definition == null)
                 {
-                    using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("AHKModule.Syntax.AHK_2.xshd"))
+                    using (var stream = System.Reflection.Assembly.GetExecutingAssembly().GetManifestResourceStream("AhkModule.Syntax.AHK_2.xshd"))
                     using (var reader = System.Xml.XmlReader.Create(stream))
                         definition = XshdLoader.Load(reader, HighlightingManager.Instance);
                 }
