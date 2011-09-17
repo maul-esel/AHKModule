@@ -4,6 +4,7 @@ using ChameleonCoder.Plugins;
 using ChameleonCoder.Resources.Interfaces;
 using IF = ChameleonCoder.Interaction.InformationProvider;
 using ICSharpCode.AvalonEdit.Highlighting;
+using ICSharpCode.AvalonEdit.Folding;
 
 namespace AhkModule
 {
@@ -34,9 +35,15 @@ namespace AhkModule
         
         public virtual void Initialize()
         {
+            IF.ResourceLoaded += AddFolding;
+            IF.ResourceUnload += RemoveFolding;
         }
 
-        public virtual void Shutdown() { }
+        public virtual void Shutdown()
+        {
+            IF.ResourceLoaded -= AddFolding;
+            IF.ResourceUnload -= RemoveFolding;
+        }
 
         public virtual void Load()
         {
@@ -82,5 +89,38 @@ namespace AhkModule
             MsgBoxCreator.ShowDialog();
         }
         #endregion        
+
+        #region folding
+
+        private FoldingManager foldingManager;
+
+        private AbstractFoldingStrategy foldingStrategy;
+
+        private void AddFolding(object sender, EventArgs e)
+        {
+            if (IF.CurrentPage == ChameleonCoder.Interaction.CCTabPage.ResourceEdit
+                && PluginManager.GetModule((sender as ILanguageResource).Language) is ModuleBase)
+            {
+                foldingManager = FoldingManager.Install(IF.GetEditor().TextArea);
+                foldingStrategy = new XmlFoldingStrategy();
+                foldingStrategy.UpdateFoldings(foldingManager, IF.GetEditor().Document);
+
+                IF.GetEditor().TextChanged += UpdateFolding;
+            }
+        }
+
+        private void RemoveFolding(object sender, EventArgs e)
+        {
+            var editor = IF.GetEditor();
+            if (editor != null)
+                editor.TextChanged -= UpdateFolding;
+        }
+
+        private void UpdateFolding(object sender, EventArgs e)
+        {
+            foldingStrategy.UpdateFoldings(foldingManager, (sender as ICSharpCode.AvalonEdit.TextEditor).Document);
+        }
+
+        #endregion
     }
 }
