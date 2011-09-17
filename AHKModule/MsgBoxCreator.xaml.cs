@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows;
-using System.Drawing;
-using Forms = System.Windows.Forms;
 using System.Windows.Interop;
 using System.Windows.Media.Imaging;
+using Forms = System.Windows.Forms;
 
 namespace AhkModule
 {
@@ -110,16 +110,17 @@ namespace AhkModule
             {
                 flags += 1048576;
             }
-            this.options = flags;
-            this.title = this.title_Text.Text;
-            this.text = this.text_Text.Text;
-            //this.timeout = (int)this.numericUpDown1.Value;
+            options = flags;
+            title = this.title_Text.Text;
+            text = this.text_Text.Text;
+
+            timeout = timeout_updwn.Number;                
 
             System.Text.StringBuilder builder = new System.Text.StringBuilder(this.title_Text.Text);
             builder.Replace("\n", "`n");
             builder.Replace(",", "`,");
             builder.Replace(";", "`;");
-            string title = builder.ToString();
+            title = builder.ToString();
 
             this.Code = this.output_Text.Text = "MsgBox " + flags + ", " + title + ", " + this.text + ", " + this.timeout;
         }
