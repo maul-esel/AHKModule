@@ -10,7 +10,7 @@
             <Border Margin="5,5,5,5">
                 <Image Width="40" Height="40" x:Name="image"/>
             </Border>
-            <RadioButton x:Name="check" Margin="5,5,5,5" GroupName="icons"/>
+            <RadioButton x:Name="check" Margin="5" GroupName="icons"/>
         </StackPanel>
     </Border>
 </UserControl>

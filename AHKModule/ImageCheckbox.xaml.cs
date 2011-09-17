@@ -6,6 +6,7 @@ namespace AhkModule
     /// <summary>
     /// Interaktionslogik für ImageCheckBox.xaml
     /// </summary>
+    [System.Obsolete("use simply CheckBox class and content property")]
     public sealed partial class ImageCheckBox : UserControl
     {
         public ImageCheckBox()

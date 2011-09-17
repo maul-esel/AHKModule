@@ -2,9 +2,9 @@
 using System.Windows.Media;
 using ChameleonCoder.Plugins;
 using ChameleonCoder.Resources.Interfaces;
-using IF = ChameleonCoder.Interaction.InformationProvider;
-using ICSharpCode.AvalonEdit.Highlighting;
 using ICSharpCode.AvalonEdit.Folding;
+using ICSharpCode.AvalonEdit.Highlighting;
+using IF = ChameleonCoder.Interaction.InformationProvider;
 
 namespace AhkModule
 {
@@ -70,7 +70,6 @@ namespace AhkModule
 
         #region MsgBoxCreator
         static MsgBoxCreator MsgBoxCreator;
-
 
         public void LoadMsgBoxCreator(IResource sender, CodeGeneratorEventArgs e)
         {
