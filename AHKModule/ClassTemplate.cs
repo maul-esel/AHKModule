@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Windows.Media;
 using ChameleonCoder.Plugins;
+using ChameleonCoder.Interaction;
+using ChameleonCoder.Resources.Management;
 using ChameleonCoder.Resources.Interfaces;
 
 namespace AhkModule
@@ -42,7 +44,18 @@ namespace AhkModule
         public IResource Create(IResource parent, string name)
         {
             i++;
-            return null;
+            var dict = ResourceTypeManager.GetFactory(ResourceType).CreateResource(ResourceType, name, parent);
+
+            // get parent's directory
+            // create file there, using the name
+            // add text to it
+            // set the 'path' property in dict
+
+            var resource = ResourceTypeManager.CreateNewResource(ResourceType, name, dict, parent);
+
+            // open the resource in edit mode
+
+            return resource;
         }
 
         int i = 1;
