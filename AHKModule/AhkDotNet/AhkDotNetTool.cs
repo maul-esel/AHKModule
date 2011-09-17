@@ -1,9 +1,10 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Net;
 using System.Windows.Media;
 using ChameleonCoder.Plugins;
 
-namespace AhkModule
+namespace AhkModule.AhkDotNet
 {
     [ChameleonCoder.CCPlugin]
     public class AhkDotNetTool : IService
@@ -18,7 +19,7 @@ namespace AhkModule
 
         public string Version { get { return "0.1"; } }
 
-        public ImageSource Icon { get { return new System.Windows.Media.Imaging.BitmapImage(new Uri("pack://application:,,,/AhkModule;component/autohotkey.net.png")); } }
+        public ImageSource Icon { get { return new System.Windows.Media.Imaging.BitmapImage(new Uri("pack://application:,,,/AhkModule;component/AhkDotNet/autohotkey.net.png")); } }
 
         public Guid Identifier { get { return new Guid("{98376daa-c496-4f03-aefb-d6385010c0f1}"); } }
 
@@ -30,6 +31,36 @@ namespace AhkModule
 
         public void Execute()
         {
+            var login = new AhkDotNetLogin();
+            if (login.ShowDialog() == true)
+            {
+                using (login.password.SecurePassword)
+                {
+                    var request = WebRequest.Create("ftp://autohotkey.net/");
+                    request.Method = WebRequestMethods.Ftp.ListDirectory;
+                    request.Credentials = new NetworkCredential(login.username.Text, login.password.SecurePassword);
+
+                    try
+                    {
+                        request.GetResponse();
+                    }
+                    catch (WebException e)
+                    {
+                        System.Windows.MessageBox.Show("connection to 'ftp://autohotkey.net/' failed.\n"
+                            + "Reason: " + e.Message);
+                        return;
+                    }
+                    finally
+                    {
+                        request.Abort();
+                    }
+
+                    var manager = new AhkDotNetManager(new NetworkCredential(login.username.Text, login.password.SecurePassword.Copy()));
+                    manager.ShowDialog();
+                }
+            }
+
+            /*
             var window = new AhkDotNetWindow();
             if (window.ShowDialog() == false)
                 return;
@@ -76,7 +107,7 @@ namespace AhkModule
                     System.Windows.MessageBox.Show("complete!");
                 else
                     System.Windows.MessageBox.Show("error!");
-            }
+            }*/
         }
 
         public bool IsBusy { get; set; }

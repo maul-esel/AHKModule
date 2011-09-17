@@ -1,0 +1,35 @@
+﻿<Window x:Class="AhkModule.AhkDotNet.AhkDotNetLogin" x:ClassModifier="internal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Icon="autohotkey.net.png"
+        Title="AutoHotkey.NET Login" SizeToContent="WidthAndHeight"
+        ShowActivated="True" ShowInTaskbar="False">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition SharedSizeGroup="row"/>
+            <RowDefinition SharedSizeGroup="row"/>
+            <RowDefinition SharedSizeGroup="row"/>
+            <RowDefinition SharedSizeGroup="row"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition SharedSizeGroup="btn"/>
+            <ColumnDefinition SharedSizeGroup="btn"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Margin="5"
+                   Text="Enter your user name and password for autohotkey.NET"/>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="user name:" Margin="5"/>
+        <TextBox Name="username" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="5"/>
+
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="password:" Margin="5"/>
+        <PasswordBox Name="password" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="5"/>
+        
+        <Button Grid.Row="3" Grid.Column="1" Content="Cancel" Margin="5"
+                IsCancel="True"/>
+        
+        <Button Grid.Row="3" Grid.Column="2" Content="OK" Margin="5"
+                IsDefault="True" Click="FinishDialog"/>
+        
+    </Grid>
+</Window>

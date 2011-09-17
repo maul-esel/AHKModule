@@ -74,10 +74,15 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AhkDotNetTool.cs" />
-    <Compile Include="AhkDotNetWindow.xaml.cs">
-      <DependentUpon>AhkDotNetWindow.xaml</DependentUpon>
+    <Compile Include="AhkDotNet\AhkDotNetLogin.xaml.cs">
+      <DependentUpon>AhkDotNetLogin.xaml</DependentUpon>
     </Compile>
+    <Compile Include="AhkDotNet\AhkDotNetManager.xaml.cs">
+      <DependentUpon>AhkDotNetManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AhkDotNet\AhkDotNetTool.cs" />
+    <Compile Include="AhkDotNet\FtpDirectory.cs" />
+    <Compile Include="AhkDotNet\FtpElement.cs" />
     <Compile Include="AutoHotkey.cs" />
     <Compile Include="AutoHotkey2.cs" />
     <Compile Include="AutoHotkey_L.cs" />
@@ -86,6 +91,7 @@
       <DependentUpon>CompileAHK_NET.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\IControl.cs" />
+    <Compile Include="AhkDotNet\FtpFile.cs" />
     <Compile Include="GuiCreator.xaml.cs">
       <DependentUpon>GuiCreator.xaml</DependentUpon>
     </Compile>
@@ -112,7 +118,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="UploadFile.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -136,7 +141,11 @@
     <Resource Include="Icons\basic.png" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="AhkDotNetWindow.xaml">
+    <Page Include="AhkDotNet\AhkDotNetLogin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AhkDotNet\AhkDotNetManager.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -167,7 +176,11 @@
     <Resource Include="Icons\version2.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="autohotkey.net.png" />
+    <Resource Include="AhkDotNet\autohotkey.net.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="AhkDotNet\file.png" />
+    <Resource Include="AhkDotNet\folder.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
