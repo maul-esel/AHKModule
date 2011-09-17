@@ -59,5 +59,24 @@ namespace AhkModule.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die The connection to &apos;{0}&apos; failed.
+        ///Reason: {1} ähnelt.
+        /// </summary>
+        internal static string AhkDotNet_ConnectionFailed {
+            get {
+                return ResourceManager.GetString("AhkDotNet_ConnectionFailed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die A tool to manage your autohotkey.net account. ähnelt.
+        /// </summary>
+        internal static string AhkDotNet_Description {
+            get {
+                return ResourceManager.GetString("AhkDotNet_Description", resourceCulture);
+            }
+        }
     }
 }
