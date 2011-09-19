@@ -44,15 +44,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ChameleonCoder">
-      <HintPath>..\..\ChameleonCoder\Deploy\ChameleonCoder.exe</HintPath>
+      <HintPath>..\..\Deploy\ChameleonCoder.exe</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ChameleonCoder.ComponentCore">
-      <HintPath>..\..\ChameleonCoder\Deploy\Components\ChameleonCoder.ComponentCore.dll</HintPath>
+      <HintPath>..\..\Deploy\Components\ChameleonCoder.ComponentCore.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="ICSharpCode.AvalonEdit">
-      <HintPath>..\..\Avalon\ICSharpCode.AvalonEdit.dll</HintPath>
+      <HintPath>..\..\Deploy\ICSharpCode.AvalonEdit.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -60,14 +60,10 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="UIAutomationProvider" />
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -185,7 +181,8 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "..\Deploy\AhkModule.dll" "..\..\ChameleonCoder\Deploy\Components\AhkModule.dll"</PostBuildEvent>
+    <PostBuildEvent>copy "$(ProjectPath)" "$(SolutionDir)\..\Deploy\Components\$(TargetFileName)"
+copy "$(OutDir)\de-DE\$(TargetName).resources.dll" "$(SolutionDir)\..\Deploy\Components\de-DE\$(TargetName).resources.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

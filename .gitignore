@@ -1,2 +1,5 @@
-/AHKModule/bin/
 /AHKModule/obj/
+*.pdb
+*.xml
+*.suo
+*.csproj.user
