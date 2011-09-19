@@ -35,14 +35,14 @@ namespace AhkModule
         
         public virtual void Initialize()
         {
-            IF.ResourceLoaded += AddFolding;
-            IF.ResourceUnload += RemoveFolding;
+            /*IF.ResourceLoaded += AddFolding;
+            IF.ResourceUnload += RemoveFolding;*/
         }
 
         public virtual void Shutdown()
         {
-            IF.ResourceLoaded -= AddFolding;
-            IF.ResourceUnload -= RemoveFolding;
+            /*IF.ResourceLoaded -= AddFolding;
+            IF.ResourceUnload -= RemoveFolding;*/
         }
 
         public virtual void Load()
