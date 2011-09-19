@@ -181,7 +181,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(ProjectPath)" "$(SolutionDir)\..\Deploy\Components\$(TargetFileName)"
+    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)\..\Deploy\Components\$(TargetFileName)"
 copy "$(OutDir)\de-DE\$(TargetName).resources.dll" "$(SolutionDir)\..\Deploy\Components\de-DE\$(TargetName).resources.dll"</PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
