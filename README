@@ -1,1 +1,4 @@
 This is the AutoHotkey, AutoHotkey_L, IronAHK and AutoHotkey v2 language module for ChameleonCoder.
+
+Credits:
+Some of the syntax highlighting xml was taken from IsNull's SmartDevelop IDE (https://github.com/IsNull/SmartDevelop)
