@@ -42,9 +42,10 @@ namespace AhkModule.AhkDotNet
                     request.Method = WebRequestMethods.Ftp.ListDirectory;
                     request.Credentials = new NetworkCredential(login.username.Text, login.password.SecurePassword);
 
+                    WebResponse response = null;
                     try
                     {
-                        request.GetResponse();
+                        response = request.GetResponse();
                     }
                     catch (WebException e)
                     {
@@ -53,7 +54,8 @@ namespace AhkModule.AhkDotNet
                     }
                     finally
                     {
-                        request.Abort();
+                        if (response != null)
+                            response.Close();
                     }
 
                     var manager = new AhkDotNetManager(new NetworkCredential(login.username.Text, login.password.SecurePassword.Copy()));
@@ -62,6 +64,6 @@ namespace AhkModule.AhkDotNet
             }
         }
 
-        public bool IsBusy { get; set; }
+        public bool IsBusy { get; private set; }
     }
 }

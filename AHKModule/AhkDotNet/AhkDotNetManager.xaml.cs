@@ -16,34 +16,59 @@ namespace AhkModule.AhkDotNet
             currentUri = new Uri("ftp://autohotkey.net/");
 
             InitializeComponent();
-            DataContext = ParseDir(currentUri);
-            // create list of files
+            Update();
         }
 
         Uri currentUri;
         NetworkCredential credentials;
+
+        #region handlers for new objects
+        /*
+         * This region contains event handlers for buttons creating new FtpElements
+         */
 
         private void CreateDir(object sender, EventArgs e)
         {
             var box = new ChameleonCoder.Interaction.InputBox("AutoHotkey.NET manager", "Enter the new directory's name.");
             if (box.ShowDialog() == true)
             {
-                var dir = new Uri(currentUri, Uri.EscapeDataString(box.Text));
-                CreateDir(dir);
+                CreateDir(new Uri(currentUri, Uri.EscapeDataString(box.Text)));
+                Update();
             }
         }
 
-        private void CreateDir(Uri directory)
+        #endregion
+
+        #region handlers for modification of existing objects
+        /*
+         * This region contains event handlers that modify existing (selected) FtpElements
+         */
+
+        private void DeleteSelected(object sender, EventArgs e)
         {
-            var request = WebRequest.Create(directory);
-            request.Credentials = credentials;
-            request.Method = WebRequestMethods.Ftp.MakeDirectory;
-            request.GetResponse();
-            request.Abort();
+            foreach (FtpElement element in list.Items)
+            {
+                if (element.IsItemChecked)
+                {
+                    DeleteItem(element);
+                }
+            }
+            Update();
         }
 
-        private void RenameFiles(object sender, EventArgs e)
+        private void RenameSelected(object sender, EventArgs e)
         {
+            foreach (FtpElement element in list.Items)
+            {
+                if (element.IsItemChecked)
+                {
+                    var box = new ChameleonCoder.Interaction.InputBox("AutoHotkey.NET manager", string.Format("Enter the new name for '{0}'.", element.Name)); if (box.ShowDialog() == true)
+                    {
+                        RenameItem(element, box.Text);
+                    }
+                }
+            }
+            Update();
         }
 
         private void DownloadFiles(object sender, EventArgs e)
@@ -63,36 +88,59 @@ namespace AhkModule.AhkDotNet
                     else
                         request.Method = WebRequestMethods.Ftp.DownloadFile;
 
-                    request.GetResponse();
+                    using (request.GetResponse()) { }
 
 
                     // todo: save stream
                 }
             }
+            Update();
         }
 
-        /// <summary>
-        /// deletes the selected files and directories from the FTP server
-        /// </summary>
-        /// <param name="sender">not used.</param>
-        /// <param name="e">not used.</param>
-        private void DeleteFiles(object sender, EventArgs e)
+        #endregion
+
+        #region FTP implementations
+        /*
+         * This region contains the methods that actually interact with the FTP server
+         */
+
+        private void CreateDir(Uri directory)
         {
-            foreach (FtpElement element in list.Items)
-            {
-                if (element.IsItemChecked)
-                {
-                    var request = WebRequest.Create(element.ElementUri);
-                    request.Credentials = credentials;
+            var request = WebRequest.Create(directory);
+            request.Credentials = credentials;
+            request.Method = WebRequestMethods.Ftp.MakeDirectory;
 
-                    if (element is FtpDirectory)
-                        request.Method = WebRequestMethods.Ftp.RemoveDirectory;
-                    else
-                        request.Method = WebRequestMethods.Ftp.DeleteFile;
+            using (request.GetResponse()) { }
+        }
 
-                    request.GetResponse();
-                }
-            }
+        private void DeleteItem(FtpElement item)
+        {
+            var request = WebRequest.Create(item.ElementUri);
+            request.Credentials = credentials;
+
+            if (item is FtpDirectory)
+                request.Method = WebRequestMethods.Ftp.RemoveDirectory;
+            else
+                request.Method = WebRequestMethods.Ftp.DeleteFile;
+
+            using (request.GetResponse()) { }
+        }
+
+        private void RenameItem(FtpElement item, string name)
+        {
+            var request = (FtpWebRequest)WebRequest.Create(item.ElementUri);
+            request.Credentials = credentials;
+            request.Method = WebRequestMethods.Ftp.Rename;
+            request.RenameTo = name;
+
+            using (request.GetResponse()) { }
+        }
+
+        #endregion
+
+        private void Update()
+        {
+            DataContext = ParseDir(currentUri);
         }
 
         /// <summary>

@@ -14,32 +14,32 @@
             <ColumnDefinition SharedSizeGroup="btn"/>
             <ColumnDefinition SharedSizeGroup="btn"/>
             <ColumnDefinition SharedSizeGroup="btn"/>
-            <ColumnDefinition SharedSizeGroup="btn"/>
-            <ColumnDefinition SharedSizeGroup="btn"/>
         </Grid.ColumnDefinitions>
 
         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Stroke="Black" StrokeThickness="2" RadiusX="5" RadiusY="5"/>
+        
         <!--upload-->
         <Button Margin="2" Grid.Row="0" Grid.Column="0" Content="upload files"/>
+
+        <!--add dir-->
+        <Button Margin="2" Grid.Row="0" Grid.Column="1" Content="add dir"
+                Click="CreateDir"/>
+        
         <!--download selected (files or dirs)-->
-        <Button Margin="2" Grid.Row="0" Grid.Column="1" Content="download files"
+        <Button Margin="2" Grid.Row="0" Grid.Column="2" Content="download selected"
                 Click="DownloadFiles"/>
         
-        <Rectangle Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" Stroke="Black" StrokeThickness="2" RadiusX="5" RadiusY="5"/>
-        <!--rename selected (dirs, files?)-->
-        <!--Button Margin="2" Grid.Row="0" Grid.Column="2" Content="rename files"
-                Click="RenameFiles"/-->
-        <!--delete selected (files or dirs)-->
-        <Button Margin="2" Grid.Row="0" Grid.Column="3" Content="delete files"
-                Click="DeleteFiles"/>
-        
-        <Rectangle Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="3" Stroke="Black" StrokeThickness="2" RadiusX="5" RadiusY="5"/>
-        <!--add dir-->
-        <Button Margin="2" Grid.Row="0" Grid.Column="4" Content="add dir"/>
-        <!--rename dir-->
-        <Button Margin="2" Grid.Row="0" Grid.Column="5" Content="rename dir"/>
+        <Rectangle Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" Stroke="Black" StrokeThickness="2" RadiusX="5" RadiusY="5"/>
 
-        <ListView Name="list" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="7" ItemsSource="{Binding}">
+        <!--delete selected (files or dirs)-->
+        <Button Margin="2" Grid.Row="0" Grid.Column="3" Content="delete selected"
+                Click="DeleteSelected"/>
+        
+        <!--rename selected (files and dirs)-->
+        <Button Margin="2" Grid.Row="0" Grid.Column="4" Content="rename selected"
+                Click="RenameSelected"/>
+
+        <ListView Name="list" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="5" ItemsSource="{Binding}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn>
@@ -53,9 +53,9 @@
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
-                    <GridViewColumn Header="file name" DisplayMemberBinding="{Binding Path=Name}"/>
+                    <GridViewColumn Header="name" DisplayMemberBinding="{Binding Path=Name}"/>
                     <GridViewColumn Header="size (KB)" DisplayMemberBinding="{Binding Path=Size}"/>
-                    <GridViewColumn Header="file type" DisplayMemberBinding="{Binding Path=Description}"/>
+                    <GridViewColumn Header="type" DisplayMemberBinding="{Binding Path=Description}"/>
                     <GridViewColumn Header="last modified" DisplayMemberBinding="{Binding Path=LastModified}"/>
                 </GridView>
             </ListView.View>
