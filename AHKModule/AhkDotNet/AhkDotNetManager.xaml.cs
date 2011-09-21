@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using System.IO;
 using System.Windows;
 
 namespace AhkModule.AhkDotNet
@@ -71,30 +72,58 @@ namespace AhkModule.AhkDotNet
             Update();
         }
 
-        private void DownloadFiles(object sender, EventArgs e)
+        private void DownloadSelected(object sender, EventArgs e)
         {
-            foreach (FtpElement element in list.Items)
+            string dir = null;
+            using (var dialog = new System.Windows.Forms.FolderBrowserDialog())
             {
-                if (element.IsItemChecked)
+                if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    var request = WebRequest.Create(element.ElementUri);
-                    request.Credentials = credentials;
-
-                    if (element is FtpDirectory)
-                    {
-                        // todo: download included files
-                        return;
-                    }
-                    else
-                        request.Method = WebRequestMethods.Ftp.DownloadFile;
-
-                    using (request.GetResponse()) { }
-
-
-                    // todo: save stream
+                    dir = dialog.SelectedPath;
                 }
             }
-            Update();
+
+            if (dir != null)
+            {
+                foreach (FtpElement element in list.Items)
+                {
+                    if (element.IsItemChecked)
+                    {
+                        MessageBox.Show(element.ElementUri.ToString() + " ==> " + dir);
+                        if (element is FtpFile)
+                        {
+                            DownloadFile(element as FtpFile, dir);
+                        }
+                        else if (element is FtpDirectory)
+                        {
+                            DownloadDir(element as FtpDirectory, dir);
+                        }
+                    }
+                }
+            }
+            MessageBox.Show("complete!");
+        }
+
+        private void DownloadDir(FtpDirectory dir, string root)
+        {
+            string dirPath = Path.Combine(root, dir.Name);
+            if (!Directory.Exists(dirPath))
+                Directory.CreateDirectory(dirPath);
+
+            MessageBox.Show(dir.ElementUri.ToString() + " == " + dir.Name);
+            foreach (FtpElement element in ParseDir(dir.ElementUri))
+            {
+                MessageBox.Show(element.ElementUri.ToString() + " ==> " + dirPath);
+                if (element is FtpFile)
+                {
+                    DownloadFile(element as FtpFile, dirPath);
+                }
+                else if (element is FtpDirectory)
+                {
+                    DownloadDir(element as FtpDirectory, dirPath);
+                }
+                MessageBox.Show("one more done");
+            }
         }
 
         #endregion
@@ -126,6 +155,33 @@ namespace AhkModule.AhkDotNet
             using (request.GetResponse()) { }
         }
 
+        private void DownloadFile(FtpFile file, string root)
+        {
+            var request = WebRequest.Create(file.ElementUri);
+            request.Credentials = credentials;
+            request.Method = WebRequestMethods.Ftp.DownloadFile;
+
+            MessageBox.Show("downloading: " + Path.Combine(root, file.Name) + "\nfrom: " + file.ElementUri);
+            using (var response = request.GetResponse())
+            {
+                using (var stream = response.GetResponseStream())
+                {
+                    string path = Path.Combine(root, file.Name);
+                    FileStream fileStream = null;
+
+                    if (!File.Exists(path))
+                        fileStream = File.Create(path);
+                    else
+                        fileStream = File.OpenWrite(path);
+
+                    using (fileStream)
+                    {
+                        stream.CopyTo(fileStream);
+                    }
+                }
+            }
+        }
+
         private void RenameItem(FtpElement item, string name)
         {
             var request = (FtpWebRequest)WebRequest.Create(item.ElementUri);
@@ -136,17 +192,10 @@ namespace AhkModule.AhkDotNet
             using (request.GetResponse()) { }
         }
 
-        #endregion
-
-        private void Update()
-        {
-            DataContext = ParseDir(currentUri);
-        }
-
         /// <summary>
         /// gets FtpElement instances for all files in a given FTP directory
         /// </summary>
-        /// <param name="dir">the URI of the directory</param>
+        /// <param name="root">the URI of the directory</param>
         /// <returns>an IList&lt;FtpElement&gt; instance containing the FtpElement instances</returns>
         private IList<FtpElement> ParseDir(Uri dir)
         {
@@ -160,12 +209,12 @@ namespace AhkModule.AhkDotNet
             {
                 using (var stream = response.GetResponseStream())
                 {
-                    using (var reader = new System.IO.StreamReader(stream))
+                    using (var reader = new StreamReader(stream))
                     {
                         string[] data = reader.ReadToEnd().Split(new char[2] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
                         foreach (var line in data)
                         {
-                            var element = FtpElement.Open(line, currentUri);
+                            var element = FtpElement.Open(line, dir);
                             if (element != null)
                                 list.Add(element);
                         }
@@ -174,6 +223,13 @@ namespace AhkModule.AhkDotNet
             }
 
             return list;
+        }
+
+        #endregion
+
+        private void Update()
+        {
+            DataContext = ParseDir(currentUri);
         }
     }
 }

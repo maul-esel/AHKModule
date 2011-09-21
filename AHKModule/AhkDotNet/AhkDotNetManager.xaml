@@ -27,7 +27,7 @@
         
         <!--download selected (files or dirs)-->
         <Button Margin="2" Grid.Row="0" Grid.Column="2" Content="download selected"
-                Click="DownloadFiles"/>
+                Click="DownloadSelected"/>
         
         <Rectangle Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" Stroke="Black" StrokeThickness="2" RadiusX="5" RadiusY="5"/>
 
