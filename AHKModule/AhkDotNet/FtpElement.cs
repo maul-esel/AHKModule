@@ -19,20 +19,19 @@ namespace AhkModule.AhkDotNet
             Size = Math.Round(Int32.Parse(data.Groups["Bytes"].Value) / 1024.00, 2);
         }
 
+        public string Description { get; protected set; }
+
         protected Uri Directory { get; private set; }
 
-        internal Uri ElementUri
-        {
-            get { return new Uri(Directory, Name); }
-        }
+        internal abstract Uri ElementUri { get; }
+
+        public abstract ImageSource Icon { get; }
 
         public bool IsItemChecked { get; set; }
 
-        public string Name { get; private set; }
-
-        public string Description { get; protected set; }
-
         public string LastModified { get; protected set; }
+
+        public string Name { get; private set; }
 
         public double Size { get; protected set; }
 
@@ -44,7 +43,7 @@ namespace AhkModule.AhkDotNet
             var match = regEx.Match(line);
             if (match.Success)
             {
-                if (match.Groups["Name"].Value == ".")
+                if (match.Groups["Name"].Value == "." || match.Groups["Name"].Value == "..")
                     return null;
                 var isDirectory = match.Groups["Dir"].Value == "d";
                 if (isDirectory)
@@ -55,7 +54,7 @@ namespace AhkModule.AhkDotNet
             return null;
         }
 
-        public abstract ImageSource Icon { get; }
+        
 
         private static readonly ImageSource fileIcon = new BitmapImage(new Uri("pack://application:,,,/AHKModule;component/AhkDotNet/file.png"));
 

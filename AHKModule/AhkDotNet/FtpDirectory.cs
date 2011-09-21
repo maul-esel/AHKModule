@@ -15,5 +15,13 @@ namespace AhkModule.AhkDotNet
         {
             get { return FtpElement.IconDir; }
         }
+
+        internal override Uri ElementUri
+        {
+            get
+            {
+                return new Uri(Directory, Name + "/");
+            }
+        }
     }
 }
