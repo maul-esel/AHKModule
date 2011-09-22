@@ -84,6 +84,48 @@ namespace AhkModule.AhkDotNet
             }
         }
 
+        private void UploadItems(object sender, EventArgs e)
+        {
+            var window = new AhkDotNetUploadWindow();
+            if (window.ShowDialog() == true)
+            {
+                var list = new List<FtpUploadElement>(window.Elements);
+                status.Text = string.Format("uploading {0} items to {1}",
+                                            list.Count,
+                                            currentUri);
+
+                var bw = new BackgroundWorker();
+                bw.DoWork += (s, args) =>
+                    {
+                        foreach (var element in window.Elements)
+                        {
+                            if (element.IsDirectory)
+                            {
+                                UploadDir(element);
+                            }
+                            else
+                            {
+                                UploadFile(element, currentUri);
+                            }
+                        }
+                    };
+                bw.RunWorkerCompleted += (s, args) =>
+                    {
+                        if (args.Error != null)
+                        {
+                            MessageBox.Show(args.Error.ToString());
+                            status.Text = "error: " + args.Error.Message;
+                        }
+                        else
+                        {
+                            status.Text = string.Empty;
+                        }
+                        Update();
+                    };
+                bw.RunWorkerAsync();
+            }
+        }
+
         #endregion
 
         #region handlers for modification of existing objects
@@ -315,7 +357,7 @@ namespace AhkModule.AhkDotNet
             var uri = item.ElementUri;
             /*
              * This is a simple hack:
-             * As the FtpWebRequest does not accept directury urls for renaming,
+             * As the FtpWebRequest does not accept directory urls for renaming,
              * we simple pretend it to be a file by removing the '/' from the end.
              * The autohotkey.net server seems to handle this correctly
              */            
@@ -328,6 +370,50 @@ namespace AhkModule.AhkDotNet
             request.RenameTo = "/" + name; // prefix it to avoid exceptions when moving into another directory
 
             using (request.GetResponse()) { }
+        }
+
+        private void UploadFile(FtpUploadElement file, Uri directory)
+        {
+            var request = (FtpWebRequest)WebRequest.Create(new Uri(directory, file.Name));
+            MessageBox.Show(request.RequestUri.ToString() + " == " + directory + " + " + file.Name);
+            request.Credentials = credentials;
+            request.Method = WebRequestMethods.Ftp.UploadFile;
+
+            using (request.GetResponse()) { }
+
+            using (var stream = request.GetRequestStream())
+            {
+                using (var fileStream = File.OpenRead(file.LocalPath))
+                {
+                    fileStream.CopyTo(stream);
+                }
+            }
+        }
+
+        private void UploadDir(FtpUploadElement dir)
+        {
+            var dirUri = new Uri(currentUri, dir.Name + "/");
+            MessageBox.Show(dirUri.ToString());
+
+            #region check if exists
+            var existsRequest = (FtpWebRequest)WebRequest.Create(dirUri);
+            existsRequest.Credentials = credentials;
+            existsRequest.Method = WebRequestMethods.Ftp.ListDirectory;
+
+            try
+            {
+                using (existsRequest.GetResponse()) { }
+            }
+            catch (WebException)
+            {
+                CreateDir(dirUri);
+            }
+            #endregion
+
+            foreach (var file in Directory.GetFiles(dir.LocalPath))
+            {
+                UploadFile(new FtpUploadElement(file, false), dirUri);
+            }
         }
 
         /// <summary>

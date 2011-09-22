@@ -19,21 +19,22 @@
         </Grid.ColumnDefinitions>
 
         <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Stroke="Black" StrokeThickness="2" RadiusX="5" RadiusY="5"/>
-        
-        <!--upload-->
-        <Button Margin="2" Grid.Row="0" Grid.Column="0" Content="upload files"/>
+
+        <!--upload (files and dirs)-->
+        <Button Margin="2" Grid.Row="0" Grid.Column="0" Content="upload files"
+                Click="UploadItems"/>
 
         <!--add dir-->
         <Button Margin="2" Grid.Row="0" Grid.Column="1" Content="add dir"
                 Click="CreateDir"/>
-        
-        <!--download selected (files or dirs)-->
+
+        <!--download selected (files and dirs)-->
         <Button Margin="2" Grid.Row="0" Grid.Column="2" Content="download selected"
                 Click="DownloadSelected"/>
         
         <Rectangle Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="3" Stroke="Black" StrokeThickness="2" RadiusX="5" RadiusY="5"/>
 
-        <!--delete selected (files or dirs)-->
+        <!--delete selected (files and dirs)-->
         <Button Margin="2" Grid.Row="0" Grid.Column="3" Content="delete selected"
                 Click="DeleteSelected"/>
         

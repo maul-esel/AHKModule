@@ -77,8 +77,12 @@
       <DependentUpon>AhkDotNetManager.xaml</DependentUpon>
     </Compile>
     <Compile Include="AhkDotNet\AhkDotNetTool.cs" />
+    <Compile Include="AhkDotNet\AhkDotNetUploadWindow.xaml.cs">
+      <DependentUpon>AhkDotNetUploadWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="AhkDotNet\FtpDirectory.cs" />
     <Compile Include="AhkDotNet\FtpElement.cs" />
+    <Compile Include="AhkDotNet\FtpUploadElement.cs" />
     <Compile Include="AutoHotkey.cs" />
     <Compile Include="AutoHotkey2.cs" />
     <Compile Include="AutoHotkey_L.cs" />
@@ -143,6 +147,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AhkDotNet\AhkDotNetManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AhkDotNet\AhkDotNetUploadWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
