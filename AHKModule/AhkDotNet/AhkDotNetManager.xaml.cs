@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net;
+using System.ComponentModel;
 using System.IO;
+using System.Net;
 using System.Windows;
 
 namespace AhkModule.AhkDotNet
 {
     /// <summary>
-    /// Interaktionslogik für AhkDotNetManager.xaml
+    /// the main window for the AhkDotNetTool service
     /// </summary>
     internal sealed partial class AhkDotNetManager : Window
     {
@@ -20,8 +21,32 @@ namespace AhkModule.AhkDotNet
             Update();
         }
 
-        Uri currentUri;
-        NetworkCredential credentials;
+        private Uri currentUri;
+        private NetworkCredential credentials;
+
+        #region event handlers for navigation
+        /*
+         * This region contains event handlers that let the user navigate through directories
+         */
+
+        private void OpenDirectory(object sender, EventArgs e)
+        {
+            var item = (sender as FrameworkElement).DataContext as FtpElement;
+            if (item != null && item is FtpDirectory)
+            {
+                currentUri = item.ElementUri;
+                Update();
+            }
+        }
+
+        private void OpenParent(object sender, EventArgs e)
+        {
+            // get the URI of the parent directory
+            currentUri = new Uri(currentUri.AbsoluteUri.Remove(currentUri.AbsoluteUri.Length - currentUri.Segments[currentUri.Segments.Length - 1].Length));
+            Update();
+        }
+
+        #endregion
 
         #region handlers for new objects
         /*
@@ -33,8 +58,29 @@ namespace AhkModule.AhkDotNet
             var box = new ChameleonCoder.Interaction.InputBox("AutoHotkey.NET manager", "Enter the new directory's name.");
             if (box.ShowDialog() == true)
             {
-                CreateDir(new Uri(currentUri, Uri.EscapeDataString(box.Text)));
-                Update();
+                string name = Uri.EscapeDataString(box.Text);
+                status.Text = string.Format("creating directory {0} in {1}",
+                                            name,
+                                            currentUri);
+
+                var bw = new BackgroundWorker();
+                bw.DoWork += (s, args) =>
+                    {
+                        CreateDir(new Uri(currentUri, name));
+                    };
+                bw.RunWorkerCompleted += (s, args) =>
+                    {
+                        if (args.Error != null)
+                        {
+                            status.Text = "error: " + args.Error.Message;
+                        }
+                        else
+                        {
+                            status.Text = string.Empty;
+                        }
+                        Update();
+                    };
+                bw.RunWorkerAsync();
             }
         }
 
@@ -47,29 +93,80 @@ namespace AhkModule.AhkDotNet
 
         private void DeleteSelected(object sender, EventArgs e)
         {
-            foreach (FtpElement element in list.Items)
-            {
-                if (element.IsItemChecked)
+            var elements = new System.Collections.Stack(list.Items);
+            status.Text = string.Format("deleting files and directories from {0}",
+                                        currentUri);
+            string log = null;
+
+            var bw = new BackgroundWorker();
+            bw.DoWork += (s, args) =>
                 {
-                    DeleteItem(element);
-                }
-            }
-            Update();
+                    foreach (FtpElement element in elements)
+                    {
+                        if (element.IsItemChecked)
+                        {
+                            try
+                            {
+                                DeleteItem(element);
+                            }
+                            catch (WebException ex)
+                            {
+                                log += string.Format("failed to delete '{0}': {1}",
+                                                    element.Name,
+                                                    ex.Message);
+                            }
+                        }
+                    }
+                };
+            bw.RunWorkerCompleted += (s, args) =>
+                {
+                    if (args.Error != null)
+                    {
+                        status.Text = "error: " + args.Error.Message;
+                    }
+                    else
+                    {
+                        status.Text = string.Empty;
+                        if (!string.IsNullOrWhiteSpace(log))
+                        {
+                            MessageBox.Show(log, "AutoHotkey.NET Manager");
+                        }                        
+                    }
+                    Update();
+                };
+            bw.RunWorkerAsync();
         }
 
-        private void RenameSelected(object sender, EventArgs e)
+        private void MoveSelected(object sender, EventArgs e)
         {
+            status.Text = string.Format("moving files and directories in {0}",
+                                        currentUri);
+            string log = null;
+
             foreach (FtpElement element in list.Items)
             {
                 if (element.IsItemChecked)
                 {
                     var box = new ChameleonCoder.Interaction.InputBox("AutoHotkey.NET manager", string.Format("Enter the new name for '{0}'.", element.Name)); if (box.ShowDialog() == true)
                     {
-                        RenameItem(element, box.Text);
+                        try
+                        {
+                            MoveItem(element, box.Text);
+                        }
+                        catch (WebException ex)
+                        {
+                            log += string.Format("failed to move '{0}' to '{1}': {2}",
+                                                element.Name,
+                                                box.Text,
+                                                ex.Message);
+                        }
                     }
                 }
             }
             Update();
+
+            if (!string.IsNullOrWhiteSpace(log))
+                MessageBox.Show(log, "AutoHotkey.NET Manager");
         }
 
         private void DownloadSelected(object sender, EventArgs e)
@@ -85,23 +182,58 @@ namespace AhkModule.AhkDotNet
 
             if (dir != null)
             {
-                foreach (FtpElement element in list.Items)
-                {
-                    if (element.IsItemChecked)
+                var elements = new System.Collections.Stack(list.Items);
+                status.Text = string.Format("downloading files and directories from '{0}' to '{1}'",
+                    currentUri,
+                    dir);
+                string log = null;
+
+                var bw = new BackgroundWorker();
+                bw.DoWork += (s, args) =>
                     {
-                        MessageBox.Show(element.ElementUri.ToString() + " ==> " + dir);
-                        if (element is FtpFile)
+                        foreach (FtpElement element in elements)
                         {
-                            DownloadFile(element as FtpFile, dir);
+                            if (element.IsItemChecked)
+                            {
+                                try
+                                {
+                                    if (element is FtpFile)
+                                    {
+                                        DownloadFile(element as FtpFile, dir);
+                                    }
+                                    else if (element is FtpDirectory)
+                                    {
+                                        DownloadDir(element as FtpDirectory, dir);
+                                    }
+                                }
+                                catch (WebException ex)
+                                {
+                                    log += string.Format("failed to download '{0}' to '{1}': {2}",
+                                                        element.Name,
+                                                        dir,
+                                                        ex.Message);
+                                }
+                            }
                         }
-                        else if (element is FtpDirectory)
+                    };
+                bw.RunWorkerCompleted += (s, args) =>
+                    {
+                        if (args.Error != null)
                         {
-                            DownloadDir(element as FtpDirectory, dir);
+                            status.Text = "error: " + args.Error.Message;
                         }
-                    }
-                }
-            }
-            MessageBox.Show("complete!");
+                        else
+                        {
+                            status.Text = string.Empty;
+                            MessageBox.Show("complete!");
+                            if (!string.IsNullOrWhiteSpace(log))
+                            {
+                                MessageBox.Show(log, "AutoHotkey.NET Manager");
+                            }
+                        }
+                    };
+                bw.RunWorkerAsync();
+            }            
         }
 
         private void DownloadDir(FtpDirectory dir, string root)
@@ -110,10 +242,8 @@ namespace AhkModule.AhkDotNet
             if (!Directory.Exists(dirPath))
                 Directory.CreateDirectory(dirPath);
 
-            MessageBox.Show(dir.ElementUri.ToString() + " == " + dir.Name);
             foreach (FtpElement element in ParseDir(dir.ElementUri))
             {
-                MessageBox.Show(element.ElementUri.ToString() + " ==> " + dirPath);
                 if (element is FtpFile)
                 {
                     DownloadFile(element as FtpFile, dirPath);
@@ -122,7 +252,6 @@ namespace AhkModule.AhkDotNet
                 {
                     DownloadDir(element as FtpDirectory, dirPath);
                 }
-                MessageBox.Show("one more done");
             }
         }
 
@@ -161,7 +290,6 @@ namespace AhkModule.AhkDotNet
             request.Credentials = credentials;
             request.Method = WebRequestMethods.Ftp.DownloadFile;
 
-            MessageBox.Show("downloading: " + Path.Combine(root, file.Name) + "\nfrom: " + file.ElementUri);
             using (var response = request.GetResponse())
             {
                 using (var stream = response.GetResponseStream())
@@ -182,12 +310,22 @@ namespace AhkModule.AhkDotNet
             }
         }
 
-        private void RenameItem(FtpElement item, string name)
+        private void MoveItem(FtpElement item, string name)
         {
-            var request = (FtpWebRequest)WebRequest.Create(item.ElementUri);
+            var uri = item.ElementUri;
+            /*
+             * This is a simple hack:
+             * As the FtpWebRequest does not accept directury urls for renaming,
+             * we simple pretend it to be a file by removing the '/' from the end.
+             * The autohotkey.net server seems to handle this correctly
+             */            
+            if (item is FtpDirectory)
+                uri = new Uri(uri.ToString().TrimEnd('/'));
+
+            var request = (FtpWebRequest)WebRequest.Create(uri);
             request.Credentials = credentials;
             request.Method = WebRequestMethods.Ftp.Rename;
-            request.RenameTo = name;
+            request.RenameTo = "/" + name; // prefix it to avoid exceptions when moving into another directory
 
             using (request.GetResponse()) { }
         }
