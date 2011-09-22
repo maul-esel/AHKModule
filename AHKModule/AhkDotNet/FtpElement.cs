@@ -36,19 +36,21 @@ namespace AhkModule.AhkDotNet
         public double Size { get; protected set; }
 
 
-        static Regex regEx = new Regex(@"^(?<Dir>d|-)((r|-)(w|-)(x|-)){3}\s+\d\s+\d{2}\s+([^\s]+)\s+(?<Bytes>\d+)\s+(?<Month>Jan|Feb|Mar|May|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(?<Day>\d{1,2})\s+(?<Hours>\d{2}):(?<Minutes>\d{2})\s+(?<Name>.*)$", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.ExplicitCapture);
+        static Regex regEx = new Regex(@"^(?<Type>d|-|l)((r|-)(w|-)(x|-)){3}\s+\d\s+\d{2}\s+([^\s]+)\s+(?<Bytes>\d+)\s+(?<Month>Jan|Feb|Mar|May|Apr|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(?<Day>\d{1,2})\s+(?<Hours>\d{2}):(?<Minutes>\d{2})\s+(?<Name>.*)$", RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.ExplicitCapture);
 
         internal static FtpElement Open(string line, Uri directory)
         {
             var match = regEx.Match(line);
             if (match.Success)
             {
-                if (match.Groups["Name"].Value == "." || match.Groups["Name"].Value == "..")
+                string name = match.Groups["Name"].Value;
+                if (name == "." || name == ".." || name == ".ftpquota")
                     return null;
-                var isDirectory = match.Groups["Dir"].Value == "d";
-                if (isDirectory)
+
+                string type = match.Groups["Type"].Value;
+                if (type == "d") // if it is a directory
                     return new FtpDirectory(match, directory);
-                else
+                else if (type == "-")
                     return new FtpFile(match, directory);
             }
             return null;
