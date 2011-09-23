@@ -2,7 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AutoHotkey.NET Manager" Height="300" Width="650" ShowActivated="True" ShowInTaskbar="False"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize"
+        Icon="autohotkey.net.png">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" MinHeight="25"/>
