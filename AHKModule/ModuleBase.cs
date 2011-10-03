@@ -4,7 +4,7 @@ using ChameleonCoder.Plugins;
 using ChameleonCoder.Resources.Interfaces;
 using ICSharpCode.AvalonEdit.Folding;
 using ICSharpCode.AvalonEdit.Highlighting;
-using IF = ChameleonCoder.Interaction.InformationProvider;
+using IF = ChameleonCoder.Shared.InformationProvider;
 
 namespace AhkModule
 {
@@ -97,7 +97,7 @@ namespace AhkModule
 
         private void AddFolding(object sender, EventArgs e)
         {
-            if (IF.CurrentPage == ChameleonCoder.Interaction.CCTabPage.ResourceEdit
+            if (IF.CurrentPage == ChameleonCoder.Shared.CCTabPage.ResourceEdit
                 && PluginManager.GetModule((sender as ILanguageResource).Language) is ModuleBase)
             {
                 foldingManager = FoldingManager.Install(IF.GetEditor().TextArea);

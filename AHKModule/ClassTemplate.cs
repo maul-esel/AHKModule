@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Media;
 using ChameleonCoder.Plugins;
-using ChameleonCoder.Interaction;
+using ChameleonCoder.Shared;
 using ChameleonCoder.Resources.Management;
 using ChameleonCoder.Resources.Interfaces;
 

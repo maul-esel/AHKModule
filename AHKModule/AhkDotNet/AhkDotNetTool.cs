@@ -26,7 +26,7 @@ namespace AhkModule.AhkDotNet
 
         public void Initialize()
         {
-            ChameleonCoder.Interaction.InformationProvider.LanguageChanged += (v) => Properties.Resources.Culture = new System.Globalization.CultureInfo((int)v);
+            ChameleonCoder.Shared.InformationProvider.LanguageChanged += (v) => Properties.Resources.Culture = new System.Globalization.CultureInfo((int)v);
         }
 
         public void Shutdown() { }
