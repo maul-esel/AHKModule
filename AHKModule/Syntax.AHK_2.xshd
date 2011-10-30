@@ -7,7 +7,9 @@
   <!-- This is the main ruleset. -->
   <RuleSet ignoreCase="true">
 
-    <Span color="Comment" begin=";" />
+    <Span color="Comment">
+      <Begin>(?&lt;=(^|\s));</Begin>
+    </Span>
 
     <Span color="Comment" multiline="true">
       <Begin>^[\s]*/\*</Begin>
