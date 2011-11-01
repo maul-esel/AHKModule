@@ -125,9 +125,11 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Syntax.AHK.xshd">
       <CustomToolNamespace>AHKModule</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Syntax.AHK_2.xshd">
       <CustomToolNamespace>AHKModule</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -136,6 +138,7 @@
     <AppDesigner Include="Properties\" />
     <EmbeddedResource Include="Syntax.AHK_L.xshd">
       <CustomToolNamespace>AHKModule</CustomToolNamespace>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
