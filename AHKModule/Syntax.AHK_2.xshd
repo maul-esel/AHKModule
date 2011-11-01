@@ -22,8 +22,8 @@
       <RuleSet>
         <!-- nested span for escape sequences -->
         <Span color="Escape">
-          <Begin>`</Begin>
-          <End>.</End>
+          <Begin>`(,|%|`|::|n|r|b|t|v|a|f|'|")</Begin>
+          <End></End>
         </Span>
       </RuleSet>
     </Span>
@@ -34,16 +34,16 @@
       <RuleSet>
         <!-- nested span for escape sequences -->
         <Span color="Escape">
-          <Begin>`</Begin>
-          <End>.</End>
+          <Begin>`(,|%|`|::|n|r|b|t|v|a|f|'|")</Begin>
+          <End></End>
         </Span>
       </RuleSet>
     </Span>
 
     <!-- escape sequences also allowed outside quotes (in commands) -->
     <Span color="Escape">
-      <Begin>`</Begin>
-      <End>.</End>
+      <Begin>`(,|%|`|::|n|r|b|t|v|a|f|'|")</Begin>
+      <End></End>
     </Span>
 
     <Span fontStyle="italic" multiline="false" begin="%[\w]" end="%" foreground="DarkOrange"/>
