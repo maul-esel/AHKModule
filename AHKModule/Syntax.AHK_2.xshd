@@ -21,7 +21,7 @@
       <End>"</End>
       <RuleSet>
         <!-- nested span for escape sequences -->
-        <Span>
+        <Span color="Escape">
           <Begin>`</Begin>
           <End>.</End>
         </Span>
@@ -33,11 +33,17 @@
       <End>'</End>
       <RuleSet>
         <!-- nested span for escape sequences -->
-        <Span>
+        <Span color="Escape">
           <Begin>`</Begin>
           <End>.</End>
         </Span>
       </RuleSet>
+    </Span>
+
+    <!-- escape sequences also allowed outside quotes (in commands) -->
+    <Span color="Escape">
+      <Begin>`</Begin>
+      <End>.</End>
     </Span>
 
     <Span fontStyle="italic" multiline="false" begin="%[\w]" end="%" foreground="DarkOrange"/>
