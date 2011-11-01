@@ -28,6 +28,18 @@
       </RuleSet>
     </Span>
 
+    <Span color="String">
+      <Begin>'</Begin>
+      <End>'</End>
+      <RuleSet>
+        <!-- nested span for escape sequences -->
+        <Span>
+          <Begin>`</Begin>
+          <End>.</End>
+        </Span>
+      </RuleSet>
+    </Span>
+
     <Span fontStyle="italic" multiline="false" begin="%[\w]" end="%" foreground="DarkOrange"/>
 
     <Rule foreground="CadetBlue" fontWeight="bold">
