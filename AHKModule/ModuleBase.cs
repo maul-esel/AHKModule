@@ -50,20 +50,30 @@ namespace AhkModule
             IF.RegisterCodeGenerator(this.LoadMsgBoxCreator, null, "MsgBoxCreator"); // add delegate and icon
             IF.RegisterCodeGenerator(delegate(IResource sender, CodeGeneratorEventArgs e)
             {
-                (new CompileAHK_NET(sender as ICompilable)).ShowDialog();
+                (new CompileAHK_NET(sender)).ShowDialog();
             }, null, "compile");
         }
 
         public virtual void Unload() { }
 
-        public virtual void Compile(ICompilable resource) 
+        public virtual void Compile(IResource resource)
         {
-            
+            throw new NotImplementedException();
         }
 
-        public virtual void Execute(IExecutable resource)
+        public virtual void Execute(IResource resource)
         {
+            throw new NotImplementedException();
+        }
 
+        public virtual bool CanCompile(IResource resource)
+        {
+            return false; // compilation not yet implemented
+        }
+
+        public virtual bool CanExecute(IResource resource)
+        {
+            return false; // execution not yet implemented
         }
 
         private bool busy;

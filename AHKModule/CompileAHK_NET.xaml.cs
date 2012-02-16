@@ -9,7 +9,7 @@ namespace AhkModule
     /// </summary>
     public sealed partial class CompileAHK_NET : Window
     {
-        public CompileAHK_NET(ICompilable resource)
+        public CompileAHK_NET(IResource resource)
         {
             InitializeComponent();
             this.resources = (ResourceCollection)this.Resources["resources"];
