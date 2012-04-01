@@ -1,4 +1,5 @@
 /AHKModule/obj/
+/Deploy/*
 *.pdb
 *.xml
 *.suo
