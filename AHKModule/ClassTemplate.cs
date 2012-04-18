@@ -51,7 +51,7 @@ namespace AhkModule
             // add text to it
             // set the 'path' property in dict
 
-            var resource = ResourceTypeManager.CreateNewResource(ResourceType, name, dict, parent);
+            var resource = ResourceTypeManager.CreateNewResource(ResourceType, name, dict, parent, parent.File);
 
             // open the resource in edit mode
 
