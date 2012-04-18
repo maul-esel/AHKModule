@@ -47,11 +47,13 @@ namespace AhkModule
 
         public virtual void Load()
         {
+            /*
             IF.RegisterCodeGenerator(this.LoadMsgBoxCreator, null, "MsgBoxCreator"); // add delegate and icon
             IF.RegisterCodeGenerator(delegate(IResource sender, CodeGeneratorEventArgs e)
             {
                 (new CompileAHK_NET(sender)).ShowDialog();
             }, null, "compile");
+            */
         }
 
         public virtual void Unload() { }
@@ -110,19 +112,23 @@ namespace AhkModule
             if (IF.CurrentPage == ChameleonCoder.Shared.CCTabPage.ResourceEdit
                 && PluginManager.GetModule((sender as ILanguageResource).Language) is ModuleBase)
             {
+                /*
                 foldingManager = FoldingManager.Install(IF.GetEditor().TextArea);
                 foldingStrategy = new XmlFoldingStrategy();
                 foldingStrategy.UpdateFoldings(foldingManager, IF.GetEditor().Document);
 
                 IF.GetEditor().TextChanged += UpdateFolding;
+                */
             }
         }
 
         private void RemoveFolding(object sender, EventArgs e)
         {
+            /*
             var editor = IF.GetEditor();
             if (editor != null)
                 editor.TextChanged -= UpdateFolding;
+            */
         }
 
         private void UpdateFolding(object sender, EventArgs e)
