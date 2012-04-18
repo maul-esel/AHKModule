@@ -51,6 +51,9 @@
       <HintPath>..\..\Deploy\Components\ChameleonCoder.ComponentCore.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="ChameleonCoder.Core">
+      <HintPath>..\..\Deploy\ChameleonCoder.Core.dll</HintPath>
+    </Reference>
     <Reference Include="ICSharpCode.AvalonEdit">
       <HintPath>..\..\Deploy\ICSharpCode.AvalonEdit.dll</HintPath>
       <Private>False</Private>
