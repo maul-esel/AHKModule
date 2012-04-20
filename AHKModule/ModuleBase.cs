@@ -33,14 +33,24 @@ namespace AhkModule
         public virtual string Version { get { return "0.01"; } }
         
         
-        public virtual void Initialize()
+        public virtual void Initialize(ChameleonCoder.ChameleonCoderApp app)
         {
+            App = app;
+
             /*IF.ResourceLoaded += AddFolding;
             IF.ResourceUnload += RemoveFolding;*/
         }
 
+        public ChameleonCoder.ChameleonCoderApp App
+        {
+            get;
+            private set;
+        }
+
         public virtual void Shutdown()
         {
+            App = null;
+
             /*IF.ResourceLoaded -= AddFolding;
             IF.ResourceUnload -= RemoveFolding;*/
         }
