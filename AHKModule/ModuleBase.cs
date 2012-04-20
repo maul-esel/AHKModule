@@ -37,8 +37,8 @@ namespace AhkModule
         {
             App = app;
 
-            /*IF.ResourceLoaded += AddFolding;
-            IF.ResourceUnload += RemoveFolding;*/
+            App.ResourceMan.ResourceLoaded += AddFolding;
+            App.ResourceMan.ResourceUnload += RemoveFolding;
         }
 
         public ChameleonCoder.ChameleonCoderApp App
@@ -51,8 +51,8 @@ namespace AhkModule
         {
             App = null;
 
-            /*IF.ResourceLoaded -= AddFolding;
-            IF.ResourceUnload -= RemoveFolding;*/
+            App.ResourceMan.ResourceLoaded -= AddFolding;
+            App.ResourceMan.ResourceUnload -= RemoveFolding;
         }
 
         public virtual void Load()
@@ -103,7 +103,8 @@ namespace AhkModule
                 () =>
                 {
                     e.Handled = true;
-                    IF.AddResource(null, sender);
+                    App.ResourceMan.Add(sender, null);
+                    //IF.AddResource(null, sender);
                     // add new file to resource
                 });
 
@@ -120,7 +121,7 @@ namespace AhkModule
         private void AddFolding(object sender, EventArgs e)
         {
             if (IF.CurrentPage == ChameleonCoder.Shared.CCTabPage.ResourceEdit
-                && PluginManager.GetModule((sender as ILanguageResource).Language) is ModuleBase)
+                && App.PluginMan.GetModule((sender as ILanguageResource).Language) is ModuleBase)
             {
                 /*
                 foldingManager = FoldingManager.Install(IF.GetEditor().TextArea);
