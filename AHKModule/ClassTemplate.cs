@@ -53,17 +53,17 @@ namespace AhkModule
             get { return "AutoHotkey v1.1 / v2"; }
         }
 
-        public IResource Create(IResource parent, string name)
+        public IResource Create(IResource parent, string name, ChameleonCoder.Files.DataFile file)
         {
             i++;
-            var dict = ResourceTypeManager.GetFactory(ResourceType).CreateResource(ResourceType, name, parent);
+            var dict = App.ResourceTypeMan.GetFactory(ResourceType).CreateResource(ResourceType, name, parent);
 
             // get parent's directory
             // create file there, using the name
             // add text to it
             // set the 'path' property in dict
 
-            var resource = ResourceTypeManager.CreateNewResource(ResourceType, name, dict, parent, parent.File);
+            var resource = App.ResourceTypeMan.CreateNewResource(ResourceType, name, dict, parent, file);
 
             // open the resource in edit mode
 
