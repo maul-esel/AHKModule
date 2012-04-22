@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Media;
 using ChameleonCoder.Plugins;
-using ChameleonCoder.Shared;
-using ChameleonCoder.Resources.Management;
 using ChameleonCoder.Resources.Interfaces;
 
 namespace AhkModule
@@ -53,7 +50,7 @@ namespace AhkModule
             get { return "AutoHotkey v1.1 / v2"; }
         }
 
-        public IResource Create(IResource parent, string name, ChameleonCoder.Files.DataFile file)
+        public IResource Create(IResource parent, string name, ChameleonCoder.Files.IDataFile file)
         {
             i++;
             var dict = App.ResourceTypeMan.GetFactory(ResourceType).CreateResource(ResourceType, name, parent);
