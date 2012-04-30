@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using ChameleonCoder.Resources;
-using ChameleonCoder.Resources.Interfaces;
 
 namespace AhkModule
 {

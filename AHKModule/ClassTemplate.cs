@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Media;
 using ChameleonCoder.Plugins;
-using ChameleonCoder.Resources.Interfaces;
+using ChameleonCoder.Resources;
 
 namespace AhkModule
 {
