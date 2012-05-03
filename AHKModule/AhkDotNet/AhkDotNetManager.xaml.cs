@@ -55,7 +55,7 @@ namespace AhkModule.AhkDotNet
 
         private void CreateDir(object sender, EventArgs e)
         {
-            var box = new ChameleonCoder.Shared.InputBox("AutoHotkey.NET manager", "Enter the new directory's name.");
+            var box = new ChameleonCoder.UI.InputBox("AutoHotkey.NET manager", "Enter the new directory's name.");
             if (box.ShowDialog() == true)
             {
                 string name = Uri.EscapeDataString(box.Text);
@@ -189,7 +189,7 @@ namespace AhkModule.AhkDotNet
             {
                 if (element.IsItemChecked)
                 {
-                    var box = new ChameleonCoder.Shared.InputBox("AutoHotkey.NET manager", string.Format("Enter the new name for '{0}'.", element.Name)); if (box.ShowDialog() == true)
+                    var box = new ChameleonCoder.UI.InputBox("AutoHotkey.NET manager", string.Format("Enter the new name for '{0}'.", element.Name)); if (box.ShowDialog() == true)
                     {
                         try
                         {

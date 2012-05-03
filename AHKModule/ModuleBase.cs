@@ -33,7 +33,7 @@ namespace AhkModule
         public virtual string Version { get { return "0.01"; } }
         
         
-        public virtual void Initialize(ChameleonCoder.ChameleonCoderApp app)
+        public virtual void Initialize(ChameleonCoder.IChameleonCoderApp app)
         {
             App = app;
 
@@ -41,7 +41,7 @@ namespace AhkModule
             App.ResourceMan.ResourceUnload += RemoveFolding;
         }
 
-        public ChameleonCoder.ChameleonCoderApp App
+        public ChameleonCoder.IChameleonCoderApp App
         {
             get;
             private set;
@@ -118,7 +118,7 @@ namespace AhkModule
 
         private AbstractFoldingStrategy foldingStrategy;
 
-        private void AddFolding(object sender, EventArgs e)
+        private void AddFolding(object sender, IResourceEventArgs e)
         {
             if (IF.CurrentPage == ChameleonCoder.Shared.CCTabPage.ResourceEdit
                 && App.PluginMan.GetModule((sender as ILanguageResource).Language) is ModuleBase)
@@ -133,7 +133,7 @@ namespace AhkModule
             }
         }
 
-        private void RemoveFolding(object sender, EventArgs e)
+        private void RemoveFolding(object sender, IResourceEventArgs e)
         {
             /*
             var editor = IF.GetEditor();

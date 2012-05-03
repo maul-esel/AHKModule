@@ -24,14 +24,14 @@ namespace AhkModule.AhkDotNet
 
         public string Name { get { return "AutoHotkey.NET Tool"; } }
 
-        public void Initialize(ChameleonCoder.ChameleonCoderApp app)
+        public void Initialize(ChameleonCoder.IChameleonCoderApp app)
         {
             App = app;
 
             ChameleonCoder.Shared.InformationProvider.LanguageChanged += (v) => Properties.Resources.Culture = new System.Globalization.CultureInfo((int)v);
         }
 
-        public ChameleonCoder.ChameleonCoderApp App
+        public ChameleonCoder.IChameleonCoderApp App
         {
             get;
             private set;

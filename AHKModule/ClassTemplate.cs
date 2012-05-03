@@ -24,7 +24,7 @@ namespace AhkModule
 
         public string Version { get { return "0.0.0.1"; } }
 
-        public void Initialize(ChameleonCoder.ChameleonCoderApp app)
+        public void Initialize(ChameleonCoder.IChameleonCoderApp app)
         {
             App = app;
         }
@@ -34,7 +34,7 @@ namespace AhkModule
             App = null;
         }
 
-        public ChameleonCoder.ChameleonCoderApp App
+        public ChameleonCoder.IChameleonCoderApp App
         {
             get;
             private set;
@@ -60,7 +60,7 @@ namespace AhkModule
             // add text to it
             // set the 'path' property in dict
 
-            var resource = App.ResourceMan.CreateNewResource(ResourceType, name, dict, parent, file);
+            var resource = App.ResourceMan.Create(App.ResourceTypeMan.GetKey(ResourceType), name, dict, parent, file);
 
             // open the resource in edit mode
 

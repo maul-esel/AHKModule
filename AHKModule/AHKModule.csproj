@@ -43,9 +43,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ChameleonCoder">
-      <HintPath>..\..\Deploy\ChameleonCoder.exe</HintPath>
-      <Private>False</Private>
+    <Reference Include="ChameleonCoder.Abstract">
+      <HintPath>..\..\Deploy\ChameleonCoder.Abstract.dll</HintPath>
     </Reference>
     <Reference Include="ChameleonCoder.ComponentCore">
       <HintPath>..\..\Deploy\Components\ChameleonCoder.ComponentCore.dll</HintPath>
@@ -53,6 +52,12 @@
     </Reference>
     <Reference Include="ChameleonCoder.Core">
       <HintPath>..\..\Deploy\ChameleonCoder.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="ChameleonCoder.Shared">
+      <HintPath>..\..\Deploy\ChameleonCoder.Shared.dll</HintPath>
+    </Reference>
+    <Reference Include="ChameleonCoder.UI">
+      <HintPath>..\..\Deploy\ChameleonCoder.UI.dll</HintPath>
     </Reference>
     <Reference Include="ICSharpCode.AvalonEdit">
       <HintPath>..\..\Deploy\ICSharpCode.AvalonEdit.dll</HintPath>
